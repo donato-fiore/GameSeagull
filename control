@@ -2,7 +2,7 @@ Package: com.kermit.gameseagull
 Name: GameSeagull
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Minor game pigeon "assistance"
+Description: Minor GamePigeon "assistance"
 Maintainer: kermit the flop
 Author: kermit the flop
 Section: Tweaks
