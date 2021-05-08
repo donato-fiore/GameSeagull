@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Archery</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.kermit.gameseagullprefs</string>
+			<key>key</key>
+			<string>archeryNoWind</string>
+			<key>label</key>
+			<string>Disable Wind</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+		</dict>
+		<dict>
+    		<key>cell</key>
+    		<string>PSButtonCell</string>
+    		<key>label</key>
+    		<string>View Source Code</string>
+			<key>action</key>
+			<string>sourceCode</string>
+		</dict>
+
+	</array>
+	<key>title</key>
+	<string>GameSeagull</string>
+</dict>
+</plist>
