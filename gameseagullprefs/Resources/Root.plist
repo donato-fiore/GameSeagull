@@ -9,6 +9,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Archery</string>
+         <key>footerText</key>
+         <string>Pebis cock man</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -26,17 +28,103 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string></string>
+			<string>8 ball</string>
 		</dict>
 		<dict>
-    		<key>cell</key>
-    		<string>PSButtonCell</string>
-    		<key>label</key>
-    		<string>View Source Code</string>
-			<key>action</key>
-			<string>sourceCode</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.kermit.gameseagullprefs</string>
+			<key>key</key>
+			<string>showTrajectory</string>
+			<key>label</key>
+			<string>Always show trajectory</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Darts</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.kermit.gameseagullprefs</string>
+			<key>key</key>
+			<string>oneDart</string>
+			<key>label</key>
+			<string>One shot win</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<string>0</string>
+			<key>defaults</key>
+			<string>com.kermit.gameseagullprefs</string>
+			<key>key</key>
+			<string>dartMode</string>
+			<key>validTitles</key>
+			<array>
+				<string>101</string>
+				<string>201</string>
+				<string>301</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>1</string>
+				<string>2</string>
+				<string>3</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>tanks</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.kermit.gameseagullprefs</string>
+			<key>key</key>
+			<string>tankNoWind</string>
+			<key>label</key>
+			<string>Disable Wind</string>
 		</dict>
 
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+		</dict>
+
+
+		<dict>
+			<key>action</key>
+			<string>apply:</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Apply</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>sourceCode</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>View Source Code</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>GameSeagull</string>
