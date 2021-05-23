@@ -67,5 +67,5 @@ static void loadPrefs() {
 %end
 
 %ctor {
-    %init(ArcheryScene = objc_getClass("ArcheryScene"), PoolBall = objc_getClass("PoolBall"), TanksWind = objc_getClass("TanksWind") DartsScene = objc_getClass("DartsScene"));
+    %init(ArcheryScene = objc_getClass("ArcheryScene"), PoolBall = objc_getClass("PoolBall"), TanksWind = objc_getClass("TanksWind"), DartsScene = objc_getClass("DartsScene"));
 }
