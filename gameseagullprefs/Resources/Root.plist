@@ -1,132 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>items</key>
-	<array>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Archery</string>
-         <key>footerText</key>
-         <string>Pebis cock man</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.kermit.gameseagullprefs</string>
-			<key>key</key>
-			<string>archeryNoWind</string>
-			<key>label</key>
-			<string>Disable Wind</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>8 ball</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.kermit.gameseagullprefs</string>
-			<key>key</key>
-			<string>showTrajectory</string>
-			<key>label</key>
-			<string>Always show trajectory</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Darts</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.kermit.gameseagullprefs</string>
-			<key>key</key>
-			<string>oneDart</string>
-			<key>label</key>
-			<string>One shot win</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSegmentCell</string>
-			<key>default</key>
-			<string>0</string>
-			<key>defaults</key>
-			<string>com.kermit.gameseagullprefs</string>
-			<key>key</key>
-			<string>dartMode</string>
-			<key>validTitles</key>
-			<array>
-				<string>101</string>
-				<string>201</string>
-				<string>301</string>
-			</array>
-			<key>validValues</key>
-			<array>
-				<string>1</string>
-				<string>2</string>
-				<string>3</string>
-			</array>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>tanks</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.kermit.gameseagullprefs</string>
-			<key>key</key>
-			<string>tankNoWind</string>
-			<key>label</key>
-			<string>Disable Wind</string>
-		</dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string></string>
-		</dict>
+	<dict>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>headerCellClass</key>
+				<string>HBPackageNameHeaderCell</string>
+				<key>icon</key>
+				<string>icon.png</string>
+				<key>packageIdentifier</key>
+				<string>com.donato.gameseagull</string>
+				<key>packageNameOverride</key>
+				<string>GameSeagull</string>
+				<key>titleColor</key>
+				<string>#ffcdd9</string>
+				<key>subtitleColor</key>
+				<string>#aaaaaa</string>
+			</dict>
 
 
-		<dict>
-			<key>action</key>
-			<string>apply:</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Apply</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>sourceCode</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>View Source Code</string>
-		</dict>
-	</array>
-	<key>title</key>
-	<string>GameSeagull</string>
-</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Archery</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>archeryNoWind</string>
+				<key>label</key>
+				<string>Disable Wind</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>8 ball</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>showTrajectory</string>
+				<key>label</key>
+				<string>Always show trajectory</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Darts</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>oneDart</string>
+				<key>label</key>
+				<string>One shot win</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSegmentCell</string>
+				<key>default</key>
+				<string>0</string>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>dartMode</string>
+				<key>validTitles</key>
+				<array>
+					<string>101</string>
+					<string>201</string>
+					<string>301</string>
+				</array>
+				<key>validValues</key>
+				<array>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+				</array>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>tanks</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>tankNoWind</string>
+				<key>label</key>
+				<string>Disable Wind</string>
+			</dict>
+
+
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Mini Golf</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>holeInOne</string>
+				<key>label</key>
+				<string>Always Hole in One</string>
+			</dict>
+
+			
+
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>footerText</key>
+				<string>GameSeagull by Donato</string>
+				<key>isStaticText</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>action</key>
+				<string>apply:</string>
+				<key>cell</key>
+				<string>PSButtonCell</string>
+				<key>cellClass</key>
+				<string>HBTintedTableCell</string>
+				<key>label</key>
+				<string>Apply</string>
+			</dict>
+
+			<dict>
+				<key>cellClass</key>
+				<string>HBLinkTableCell</string>
+				<key>cell</key>
+				<string>PSButtonCell</string>
+				<key>action</key>
+				<string>github</string>
+				<key>label</key>
+				<string>GitHub</string>
+				<key>subtitle</key>
+				<string>Source Code</string>
+			</dict>
+		</array>
+		<key>title</key>
+		<string>GameSeagull</string>
+	</dict>
 </plist>

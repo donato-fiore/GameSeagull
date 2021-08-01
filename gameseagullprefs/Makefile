@@ -6,6 +6,7 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = gameseagullprefs
 
+gameseagullprefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
 gameseagullprefs_FILES = GSPRootListController.m
 gameseagullprefs_FRAMEWORKS = UIKit
 gameseagullprefs_PRIVATE_FRAMEWORKS = Preferences

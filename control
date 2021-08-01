@@ -1,9 +1,9 @@
-Package: com.kermit.gameseagull
+Package: com.donato.gameseagull
 Name: GameSeagull
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Minor GamePigeon "assistance"
-Maintainer: kermit the flop
-Author: kermit the flop
+Description: Minor game pigeon "assistance"
+Maintainer: Donato Fiore
+Author: Donato Fiore
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000)
+Depends: mobilesubstrate, ws.hbang.common (>= 1.11)

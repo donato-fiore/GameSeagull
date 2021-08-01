@@ -1,1 +1,8 @@
-{ Filter = { Bundles = ( "com.gamerdelights.gamepigeon.ext" ); }; }
+{
+    Filter =     {
+        Bundles =         (
+            "com.gamerdelights.gamepigeon.ext",
+            "com.apple.MobileSMS"
+        );
+    };
+}
