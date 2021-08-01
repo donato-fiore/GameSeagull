@@ -2,7 +2,7 @@
 
 GamePigeon hacks to give a little edge on your friends
 
-Direct download [here](https://github.com/donato-fiore/GameSeagull/raw/main/packages/com.kermit.gameseagull_0.0.1_iphoneos-arm.deb), no repo for now
+Direct download [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.1/com.donato.gameseagull_1.1_iphoneos-arm.deb), no repo for now
 
 
 ## What's currently implemented
