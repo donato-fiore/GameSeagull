@@ -2,6 +2,13 @@
 
 Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.1/com.donato.gameseagull_1.1_iphoneos-arm.deb), no cydia repo for now
 
+# Building & Installation
+```SHELL
+git clone https://github.com/donato-fiore/GameSeagull.git
+cd GameSeagull
+make package install
+```
+
 # Changelog
 ## [1.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.1/com.donato.gameseagull_1.1_iphoneos-arm.deb) - 2021-08-01
 ### Added
