@@ -10,6 +10,11 @@ make package install
 ```
 
 # Changelog
+## [1.2](https://github.com/donato-fiore/GameSeagull/releases/download/1.2/com.donato.gameseagull_1.2_iphoneos-arm.deb) - 2021-08-07
+### Added
+- Win Spoofer
+- Anagrams Word Unscrambler
+- One shot Cup Pong win
 ## [1.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.1/com.donato.gameseagull_1.1_iphoneos-arm.deb) - 2021-08-01
 ### Added
 - Auto Hole in One for Mini Golf
