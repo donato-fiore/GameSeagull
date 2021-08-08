@@ -2,7 +2,6 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <Cephei/HBPreferences.h>
 #import <CepheiPrefs/HBRootListController.h>
-#include <spawn.h>
 
 @implementation GSPRootListController
 
@@ -36,4 +35,35 @@
 	posix_spawn(&pid, "/bin/sh", NULL, NULL, (char *const *)args, NULL);
 }
 
+@end
+
+@implementation WinSpooferController
+@synthesize doneButton;
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
+    done.frame = CGRectMake(0,0,30,30);
+    done.layer.cornerRadius = done.frame.size.height / 2;
+    done.layer.masksToBounds = YES;
+    [done setImage:[UIImage systemImageNamed:@"keyboard.chevron.compact.down"] forState:UIControlStateNormal];
+    [done addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
+    
+    doneButton = [[UIBarButtonItem alloc] initWithCustomView:done];
+    
+    self.navigationItem.rightBarButtonItems = @[doneButton];
+}
+- (void)loadView {
+	[super loadView];
+	((UITableView *)[self table]).keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+}
+- (NSArray *)specifiers {
+	if (!_specifiers) {
+		_specifiers = [self loadSpecifiersFromPlistName:@"WinSpoofing" target:self];
+	}
+	return _specifiers;
+}
+- (void)dismiss:(id)sender {
+	[self.view endEditing:YES];
+}
 @end

@@ -1,5 +1,4 @@
-TARGET := iphone:clang:latest:7.0
-
+TARGET := iphone:clang:14.4:13.0
 ARCHS = arm64 arm64e
 
 include $(THEOS)/makefiles/common.mk
@@ -11,6 +10,6 @@ gameseagullprefs_FILES = GSPRootListController.m
 gameseagullprefs_FRAMEWORKS = UIKit
 gameseagullprefs_PRIVATE_FRAMEWORKS = Preferences
 gameseagullprefs_INSTALL_PATH = /Library/PreferenceBundles
-gameseagullprefs_CFLAGS = -fobjc-arc
+gameseagullprefs_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
 
 include $(THEOS_MAKE_PATH)/bundle.mk

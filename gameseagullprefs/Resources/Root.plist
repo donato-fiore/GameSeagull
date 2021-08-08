@@ -20,8 +20,6 @@
 				<key>subtitleColor</key>
 				<string>#aaaaaa</string>
 			</dict>
-
-
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
@@ -63,6 +61,8 @@
 				<string>PSGroupCell</string>
 				<key>label</key>
 				<string>Darts</string>
+				<key>footerText</key>
+				<string>* HIGHLY Suspicious</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -116,13 +116,13 @@
 				<key>label</key>
 				<string>Disable Wind</string>
 			</dict>
-
-
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
 				<key>label</key>
 				<string>Mini Golf</string>
+				<key>footerText</key>
+				<string>* HIGHLY Suspicious</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -137,8 +137,65 @@
 				<string>Always Hole in One</string>
 			</dict>
 
-			
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Cup Pong</string>
+				<key>footerText</key>
+				<string>* HIGHLY Suspicious</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>cupInOne</string>
+				<key>label</key>
+				<string>One Shot Win</string>
+			</dict>
 
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Anagrams</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>anagrams</string>
+				<key>label</key>
+				<string>Word solver</string>
+			</dict>
+
+
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Other</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSLinkListCell</string>
+				<key>default</key>
+				<string></string>
+				<key>detail</key>
+				<string>WinSpooferController</string>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>label</key>
+				<string>Spoof wins</string>
+			</dict>
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
@@ -170,6 +227,7 @@
 				<key>subtitle</key>
 				<string>Source Code</string>
 			</dict>
+
 		</array>
 		<key>title</key>
 		<string>GameSeagull</string>
