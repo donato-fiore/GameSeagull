@@ -1,6 +1,6 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.1/com.donato.gameseagull_1.1_iphoneos-arm.deb), no cydia repo for now
+Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.2/com.donato.gameseagull_1.2_iphoneos-arm.deb), no cydia repo for now
 
 # Building & Installation
 ```SHELL
