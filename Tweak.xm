@@ -131,7 +131,6 @@ int valueForKey(NSString *key) {
 
 
 // Cup Pong
-BeerView *beerViewInstance;
 %hook BeerView
 -(void)killCup:(id)arg1 {
     if(boolForKey(@"cupInOne")) {
@@ -142,12 +141,6 @@ BeerView *beerViewInstance;
         %orig;
     }
 }
-
--(id)initWithFrame:(CGRect)arg1 {
-    beerViewInstance = self;
-    return %orig;
-}
-
 %end
 
 
