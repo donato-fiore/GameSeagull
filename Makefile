@@ -7,7 +7,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = GameSeagull
 
-GameSeagull_FILES = Tweak.xm
+GameSeagull_FILES = Tweak.xm BPButton.m
 GameSeagull_CFLAGS = -fobjc-arc
 GameSeagull_EXTRA_FRAMEWORKS += Cephei
 

@@ -1,9 +1,9 @@
 Package: com.donato.gameseagull
 Name: GameSeagull
-Version: 1.2
+Version: 1.3
 Architecture: iphoneos-arm
 Description: Minor game pigeon "assistance"
 Maintainer: Donato Fiore
 Author: Donato Fiore
 Section: Tweaks
-Depends: mobilesubstrate, ws.hbang.common (>= 1.11)
+Depends: mobilesubstrate, ws.hbang.common (>= 1.11), firmware (>= 13.0)

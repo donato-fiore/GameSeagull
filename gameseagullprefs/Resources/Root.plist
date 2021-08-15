@@ -9,8 +9,6 @@
 				<string>PSGroupCell</string>
 				<key>headerCellClass</key>
 				<string>HBPackageNameHeaderCell</string>
-				<key>icon</key>
-				<string>icon.png</string>
 				<key>packageIdentifier</key>
 				<string>com.donato.gameseagull</string>
 				<key>packageNameOverride</key>
@@ -62,7 +60,19 @@
 				<key>label</key>
 				<string>Darts</string>
 				<key>footerText</key>
-				<string>* HIGHLY Suspicious</string>
+				<string>* One shot win is HIGHLY Suspicious</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>aimDart</string>
+				<key>label</key>
+				<string>Aimbot</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -162,7 +172,7 @@
 				<key>cell</key>
 				<string>PSGroupCell</string>
 				<key>label</key>
-				<string>Anagrams</string>
+				<string>Word Games</string>
 			</dict>
 			<dict>
 				<key>cell</key>

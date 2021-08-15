@@ -4,18 +4,30 @@
 #import <UIKit/UIKit.h>
 #import <SceneKit/SCNView.h>
 #import <SpriteKit/SKNode.h>
+#import <SceneKit/SceneKit.h>
+#import "BPButton.h"
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
 @interface GameScene : SKScene {}
 @end
 
-@interface AnagramsScene : GameScene {
-	NSDictionary* dict;
-    NSString* letters;
+@interface BeerView : SCNView {
+    NSMutableArray* cups;
 }
-- (NSString*)alphabetize:(NSString*)letters;
-- (SKLabelNode *)noodleNode;
+@end
+
+@interface HuntScene : GameScene
+- (void)revealWords:(BOOL)arg1 ;
+@end
+
+@interface AnagramsScene : GameScene
+- (void)revealWords:(BOOL)arg1 ;
+@end
+
+@interface AnagramsWordList : SKNode {
+	NSString* words_string;
+}
 @end
 
 @interface GameIcon : UIView {}
@@ -23,10 +35,6 @@
 -(NSString *)name ;
 @end
 
-@interface BeerView : SCNView {
-    NSMutableArray* cups;
-}
-@end
 
 BOOL boolForKey(NSString *key) {
     static NSUserDefaults *prefs;
@@ -119,7 +127,11 @@ int valueForKey(NSString *key) {
 }
 %end
 
+
+
+
 // Cup Pong
+BeerView *beerViewInstance;
 %hook BeerView
 -(void)killCup:(id)arg1 {
     if(boolForKey(@"cupInOne")) {
@@ -129,84 +141,69 @@ int valueForKey(NSString *key) {
     } else {
         %orig;
     }
-    
 }
+
+-(id)initWithFrame:(CGRect)arg1 {
+    beerViewInstance = self;
+    return %orig;
+}
+
 %end
+
 
 
 
 // Anagrams
 %hook AnagramsScene
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
-    SKNode *node = [self nodeAtPoint:location];
-
-    NSMutableString *wordsString = [[NSMutableString alloc]init];
-    NSString *gameLetters = [self valueForKey:@"letters"];
-    NSDictionary *wordDict = [self valueForKey:@"dict"];
-
-    if ([node.name isEqualToString:@"buttonNode"]) {
-        UIViewController *vc = self.view.window.rootViewController;
-        
-        for(NSString* key in wordDict) {
-            if([[self alphabetize:gameLetters] containsString:[self alphabetize:wordDict[key]]]) {
-                [wordsString appendString:[NSString stringWithFormat:@"%@\n", wordDict[key]]];
-            }
-        }
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Words"
-                           message:[NSString stringWithString:wordsString]
-                           preferredStyle:UIAlertControllerStyleAlert];
-
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action) {}];
-
-        [alert addAction:defaultAction];
-        [vc presentViewController:alert animated:YES completion:nil];
-    }
-    %orig;
-}
+UIButton *anagramsButton;
 
 -(void)startGame {
     if(boolForKey(@"anagrams")) {
-        [self addChild: [self noodleNode]];
+        anagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [anagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
+        [anagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
+        [anagramsButton setTitle:@"Reveal Words" forState:UIControlStateNormal];
+        [anagramsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [anagramsButton addTarget:self action:@selector(anagramsShow) forControlEvents:UIControlEventTouchUpInside];
+        anagramsButton.layer.cornerRadius = 14;
+
+        [self.view addSubview:anagramsButton];
     }
     %orig;
 }
 
 -(void)toResult {
     if(boolForKey(@"anagrams")) {
-        [self enumerateChildNodesWithName:@"buttonNode" usingBlock:^(SKNode *node, BOOL *stop) {[node removeFromParent];}];
+        [anagramsButton removeFromSuperview];
     }
     %orig;
 }
 
 %new
--(NSString*)alphabetize:(NSString*)letters {
-    NSMutableArray *charArray = [NSMutableArray arrayWithCapacity:letters.length];
-    for (int i = 0; i < letters.length; ++i) {
-        NSString *charStr = [letters substringWithRange:NSMakeRange(i, 1)];
-        [charArray addObject:charStr];
-    }
-    return (NSString*)[[charArray sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] componentsJoinedByString:@""];
-}
+-(void)anagramsShow {
+    NSMutableString *wordsString = [[NSMutableString alloc] init];
+    [self revealWords:YES];
+    NSArray *word = [[[[self valueForKey:@"wordList"] valueForKey:@"words_string"] stringByReplacingOccurrencesOfString:@"?" withString:@""] componentsSeparatedByString:@"|"];
+    UIViewController *vc = self.view.window.rootViewController;
 
-%new
-- (SKLabelNode *)noodleNode
-{
-    SKLabelNode *buttonNode = [SKLabelNode labelNodeWithText:@"Reveal Words"];
-    buttonNode.fontColor = [UIColor colorWithRed:0.40 green:0.31 blue:0.65 alpha:1.0];
-    buttonNode.fontName = @"Helvetica";
-    buttonNode.fontSize = 20;
-    buttonNode.position = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, 410.0);
-    buttonNode.name = @"buttonNode";//how the node is identified later
-    buttonNode.zPosition = 1.0;
-    return buttonNode;
+    for(int i = 0; i < [word count]; i++) {
+        [wordsString appendString:[NSString stringWithFormat:@"%@\n", word[i]]];
+    }
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Words"
+                        message:[NSString stringWithString:wordsString]
+                        preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [vc presentViewController:alert animated:YES completion:nil];
+
 }
 %end
 
+// Win Spoofer
 %hook GameIcon
 -(void)setWins:(int)arg1 {
     NSString *name = [self name];
@@ -265,6 +262,60 @@ int valueForKey(NSString *key) {
     }
 }
 %end
+
+
+
+
+// Word Hunt
+%hook HuntScene
+
+UIButton *huntButton;
+
+-(void)startGame {
+    if(boolForKey(@"anagrams")) {
+        huntButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [huntButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
+        [huntButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
+        [huntButton setTitle:@"Reveal Words" forState:UIControlStateNormal];
+        [huntButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [huntButton addTarget:self action:@selector(huntShow) forControlEvents:UIControlEventTouchUpInside];
+        huntButton.layer.cornerRadius = 14;
+
+        [self.view addSubview:huntButton];
+    }
+    %orig;
+}
+
+-(void)toResult {
+    if(boolForKey(@"anagrams")) {
+        [huntButton removeFromSuperview];
+    }
+    %orig;
+}
+
+%new
+-(void)huntShow {
+    NSMutableString *wordsString = [[NSMutableString alloc] init];
+    [self revealWords:YES];
+    NSArray *word = [[[[self valueForKey:@"wordList"] valueForKey:@"words_string"] stringByReplacingOccurrencesOfString:@"?" withString:@""] componentsSeparatedByString:@"|"];
+    UIViewController *vc = self.view.window.rootViewController;
+
+    for(int i = 0; i < [word count]; i++) {
+        [wordsString appendString:[NSString stringWithFormat:@"%@\n", word[i]]];
+    }
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Words"
+                        message:[NSString stringWithString:wordsString]
+                        preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [vc presentViewController:alert animated:YES completion:nil];
+
+}
+%end
+
 
 
 
