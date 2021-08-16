@@ -5,7 +5,6 @@
 #import <SceneKit/SCNView.h>
 #import <SpriteKit/SKNode.h>
 #import <SceneKit/SceneKit.h>
-#import "BPButton.h"
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
