@@ -237,38 +237,9 @@ UIButton *anagramsButton;
 
 // Win Spoofer
 %hook GameIcon
-NSDictionary* gameDict = @{
-    @"pool": @"pool",
-    @"sea": @"sea",
-    @"basketball": @"basketball",
-    @"archery": @"archery",
-    @"anagrams": @"anagrams",
-    @"hunt": @"hunt",
-    @"wordbites": @"wordbites",
-    @"darts": @"darts",
-    @"cup": @"cup",
-    @"golf": @"golf",
-    @"knock": @"knock",
-    @"crazy": @"crazy",
-    @"connect": @"connect",
-    @"paint": @"paint",
-    @"shuffle": @"shuffle",
-    @"tanks": @"tanks",
-    @"fill": @"fill",
-    @"checkers": @"checkers",
-    @"chess": @"chess",
-    @"mancala": @"mancala",
-    @"dots": @"dots",
-    @"renju": @"renju",
-    @"reversi": @"reversi",
-    @"pool2": @"pool2",
-    @"questions": @"questions",
-    @"wordgames": @"wordgames"
-};
-
 -(void)setWins:(int)arg1 {
     NSString *_id = [self _id];
-    %orig(valueForKey([gameDict objectForKey:_id]) ?: arg1);
+    %orig(valueForKey(_id) ?: arg1);
 }
 %end
 
