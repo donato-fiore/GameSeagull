@@ -26,7 +26,7 @@
 				<key>label</key>
 				<string>20 questions</string>
 				<key>key</key>
-				<string>questions_wins</string>
+				<string>questions</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -38,7 +38,7 @@
 				<key>label</key>
 				<string>8 ball</string>
 				<key>key</key>
-				<string>pool_wins</string>
+				<string>pool</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -50,7 +50,7 @@
 				<key>label</key>
 				<string>9 ball</string>
 				<key>key</key>
-				<string>pool2_wins</string>
+				<string>pool2</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -63,7 +63,7 @@
 				<key>label</key>
 				<string>Anagrams</string>
 				<key>key</key>
-				<string>anagrams_wins</string>
+				<string>anagrams</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -75,7 +75,7 @@
 				<key>label</key>
 				<string>Archery</string>
 				<key>key</key>
-				<string>archery_wins</string>
+				<string>archery</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -87,7 +87,7 @@
 				<key>label</key>
 				<string>Basketball</string>
 				<key>key</key>
-				<string>basketball_wins</string>
+				<string>basketball</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -99,7 +99,7 @@
 				<key>label</key>
 				<string>Checkers</string>
 				<key>key</key>
-				<string>checkers_wins</string>
+				<string>checkers</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -111,7 +111,7 @@
 				<key>label</key>
 				<string>Chess</string>
 				<key>key</key>
-				<string>chess_wins</string>
+				<string>chess</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -123,7 +123,7 @@
 				<key>label</key>
 				<string>Crazy 8</string>
 				<key>key</key>
-				<string>crazy_wins</string>
+				<string>crazy</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -135,7 +135,7 @@
 				<key>label</key>
 				<string>Cup Pong</string>
 				<key>key</key>
-				<string>cup_wins</string>
+				<string>beer</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -147,7 +147,7 @@
 				<key>label</key>
 				<string>Darts</string>
 				<key>key</key>
-				<string>darts_wins</string>
+				<string>darts</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -159,7 +159,7 @@
 				<key>label</key>
 				<string>Dots &#38; boxes</string>
 				<key>key</key>
-				<string>dots_wins</string>
+				<string>dots</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -171,7 +171,7 @@
 				<key>label</key>
 				<string>Filler</string>
 				<key>key</key>
-				<string>fill_wins</string>
+				<string>fill</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -183,7 +183,7 @@
 				<key>label</key>
 				<string>Four in a row</string>
 				<key>key</key>
-				<string>connect_wins</string>
+				<string>connect</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -195,7 +195,7 @@
 				<key>label</key>
 				<string>Gomoku</string>
 				<key>key</key>
-				<string>renju_wins</string>
+				<string>renju</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -207,7 +207,7 @@
 				<key>label</key>
 				<string>Knockout</string>
 				<key>key</key>
-				<string>knock_wins</string>
+				<string>knock</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -219,7 +219,7 @@
 				<key>label</key>
 				<string>Mancala</string>
 				<key>key</key>
-				<string>mancala_wins</string>
+				<string>mancala</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -229,7 +229,7 @@
 				<key>defaults</key>
 				<string>com.donato.gameseagullprefs</string>
 				<key>label</key>
-				<string>Mini golf</string>
+				<string>golf</string>
 				<key>key</key>
 				<string>golf_wins</string>
 				<key>isNumeric</key>
@@ -244,7 +244,7 @@
 				<key>label</key>
 				<string>Paintball</string>
 				<key>key</key>
-				<string>paint_wins</string>
+				<string>paint</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -256,7 +256,7 @@
 				<key>label</key>
 				<string>Riversi</string>
 				<key>key</key>
-				<string>reversi_wins</string>
+				<string>reversi</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -268,7 +268,7 @@
 				<key>label</key>
 				<string>Sea battle</string>
 				<key>key</key>
-				<string>sea_wins</string>
+				<string>sea</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -280,7 +280,7 @@
 				<key>label</key>
 				<string>Shuffleboard</string>
 				<key>key</key>
-				<string>shuffle_wins</string>
+				<string>shuffle</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -292,7 +292,7 @@
 				<key>label</key>
 				<string>Tanks</string>
 				<key>key</key>
-				<string>tanks_wins</string>
+				<string>tanks</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -304,7 +304,19 @@
 				<key>label</key>
 				<string>Word bites</string>
 				<key>key</key>
-				<string>wordbites_wins</string>
+				<string>wordbites</string>
+				<key>isNumeric</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSEditTextCell</string>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>label</key>
+				<string>Word games</string>
+				<key>key</key>
+				<string>wordgames</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>
@@ -316,7 +328,7 @@
 				<key>label</key>
 				<string>Word hunt</string>
 				<key>key</key>
-				<string>hunt_wins</string>
+				<string>hunt</string>
 				<key>isNumeric</key>
 				<true/>
 			</dict>

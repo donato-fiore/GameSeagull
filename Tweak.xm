@@ -6,6 +6,7 @@
 #import <SpriteKit/SKNode.h>
 #import <SceneKit/SceneKit.h>
 
+
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
 @interface GameScene : SKScene {}
@@ -20,7 +21,9 @@
 - (void)revealWords:(BOOL)arg1 ;
 @end
 
-@interface AnagramsScene : GameScene
+@interface AnagramsScene : GameScene {
+    NSMutableArray* blocks;
+}
 - (void)revealWords:(BOOL)arg1 ;
 @end
 
@@ -32,6 +35,7 @@
 @interface GameIcon : UIView {}
 -(void)setWins:(int)arg1 ;
 -(NSString *)name ;
+-(NSString *)_id;
 @end
 
 
@@ -53,6 +57,8 @@ int valueForKey(NSString *key) {
     return [value intValue];
 }
 
+
+
 // Archery
 %hook ArcheryScene
 -(void)setWind:(float)arg1 angle:(float)arg2 {
@@ -63,6 +69,8 @@ int valueForKey(NSString *key) {
     }
 }
 %end
+
+
 
 // 8 ball
 %hook PoolBall
@@ -79,6 +87,34 @@ int valueForKey(NSString *key) {
     return %orig;
 }
 %end
+// 1 is 8 ball 2 is 8ball+ 3 is 9ball
+%hook PoolScene
+
+-(void)didMoveToView:(id)arg1 {
+    %orig;
+    if(boolForKey(@"noHardMode")) {
+        MSHookIvar<NSString*>(self, "mode") = @"n";
+    }    
+}
+%end
+
+%hook PoolScene2
+-(void)didMoveToView:(id)arg1 {
+    %orig;
+    if(boolForKey(@"noHardMode")) {
+        MSHookIvar<NSString*>(self, "mode") = @"n";
+    }
+}
+%end
+%hook PoolScene3
+-(void)didMoveToView:(id)arg1 {
+    %orig;
+    if(boolForKey(@"noHardMode")) {
+        MSHookIvar<NSString*>(self, "mode") = @"n";
+    }
+}
+%end
+
 
 // Tanks
 %hook TanksWind
@@ -89,6 +125,8 @@ int valueForKey(NSString *key) {
     return %orig;
 }
 %end
+
+
 
 // Darts
 %hook DartsScene
@@ -110,6 +148,8 @@ int valueForKey(NSString *key) {
 }
 %end
 
+
+
 // Mini golf
 %hook GolfBall
 -(BOOL)inside {
@@ -128,7 +168,6 @@ int valueForKey(NSString *key) {
 
 
 
-
 // Cup Pong
 %hook BeerView
 -(void)killCup:(id)arg1 {
@@ -144,12 +183,10 @@ int valueForKey(NSString *key) {
 
 
 
-
 // Anagrams
 %hook AnagramsScene
 
 UIButton *anagramsButton;
-
 -(void)startGame {
     if(boolForKey(@"anagrams")) {
         anagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -162,6 +199,7 @@ UIButton *anagramsButton;
 
         [self.view addSubview:anagramsButton];
     }
+
     %orig;
 }
 
@@ -191,70 +229,48 @@ UIButton *anagramsButton;
 
     [alert addAction:defaultAction];
     [vc presentViewController:alert animated:YES completion:nil];
-
+    NSLog(@"PENIS %@", vc);
 }
 %end
+
+
 
 // Win Spoofer
 %hook GameIcon
+NSDictionary* gameDict = @{
+    @"pool": @"pool",
+    @"sea": @"sea",
+    @"basketball": @"basketball",
+    @"archery": @"archery",
+    @"anagrams": @"anagrams",
+    @"hunt": @"hunt",
+    @"wordbites": @"wordbites",
+    @"darts": @"darts",
+    @"cup": @"cup",
+    @"golf": @"golf",
+    @"knock": @"knock",
+    @"crazy": @"crazy",
+    @"connect": @"connect",
+    @"paint": @"paint",
+    @"shuffle": @"shuffle",
+    @"tanks": @"tanks",
+    @"fill": @"fill",
+    @"checkers": @"checkers",
+    @"chess": @"chess",
+    @"mancala": @"mancala",
+    @"dots": @"dots",
+    @"renju": @"renju",
+    @"reversi": @"reversi",
+    @"pool2": @"pool2",
+    @"questions": @"questions",
+    @"wordgames": @"wordgames"
+};
+
 -(void)setWins:(int)arg1 {
-    NSString *name = [self name];
-    if([name isEqual:@"8 Ball"]) {
-        %orig(valueForKey(@"pool_wins") ?: arg1);
-    } else if([name isEqual:@"Sea Battle"]) {
-        %orig(valueForKey(@"sea_wins") ?: arg1);
-    } else if([name isEqual:@"Basketball"]) {
-        %orig(valueForKey(@"basketball_wins") ?: arg1);
-    } else if([name isEqual:@"Archery"]) {
-        %orig(valueForKey(@"archery_wins") ?: arg1);
-    } else if([name isEqual:@"Anagrams"]) {
-        %orig(valueForKey(@"anagrams_wins") ?: arg1);
-    } else if([name isEqual:@"Word Hunt"]) {
-        %orig(valueForKey(@"hunt_wins") ?: arg1);
-    } else if([name isEqual:@"Word Bites"]) {
-        %orig(valueForKey(@"wordbites_wins") ?: arg1);
-    } else if([name isEqual:@"Darts"]) {
-        %orig(valueForKey(@"darts_wins") ?: arg1);
-    } else if([name isEqual:@"Cup Pong"]) {
-        %orig(valueForKey(@"cup_wins") ?: arg1);
-    } else if([name isEqual:@"Mini Golf"]) {
-        %orig(valueForKey(@"golf_wins") ?: arg1);
-    } else if([name isEqual:@"Knockout"]) {
-        %orig(valueForKey(@"knock_wins") ?: arg1);
-    } else if([name isEqual:@"CRAZY 8"]) {
-        %orig(valueForKey(@"crazy_wins") ?: arg1);
-    } else if([name isEqual:@"Four in a Row"]) {
-        %orig(valueForKey(@"connect_wins") ?: arg1);
-    } else if([name isEqual:@"Paintball"]) {
-        %orig(valueForKey(@"paint_wins") ?: arg1);
-    } else if([name isEqual:@"Shuffleboard"]) {
-        %orig(valueForKey(@"shuffle_wins") ?: arg1);
-    } else if([name isEqual:@"Tanks"]) {
-        %orig(valueForKey(@"tanks_wins") ?: arg1);
-    } else if([name isEqual:@"Filler"]) {
-        %orig(valueForKey(@"fill_wins") ?: arg1);
-    } else if([name isEqual:@"Checkers"]) {
-        %orig(valueForKey(@"checkers_wins") ?: arg1);
-    } else if([name isEqual:@"Chess"]) {
-        %orig(valueForKey(@"chess_wins") ?: arg1);
-    } else if([name isEqual:@"Mancala"]) {
-        %orig(valueForKey(@"mancala_wins") ?: arg1);
-    } else if([name isEqual:@"Dots & Boxes"]) {
-        %orig(valueForKey(@"dots_wins") ?: arg1);
-    } else if([name isEqual:@"Gomoku"]) {
-        %orig(valueForKey(@"renju_wins") ?: arg1);
-    } else if([name isEqual:@"Reversi"]) {
-        %orig(valueForKey(@"reversi_wins") ?: arg1);
-    } else if([name isEqual:@"9 Ball"]) {
-        %orig(valueForKey(@"pool2_wins") ?: arg1);
-    } else if([name isEqual:@"20 Questions"]) {
-        %orig(valueForKey(@"questions_wins") ?: arg1);
-    } else if([name isEqual:@"Word Games"]) {
-        %orig((valueForKey(@"anagrams_wins") + valueForKey(@"wordbites_wins") + valueForKey(@"hunt_wins")) ?: arg1);
-    }
+    NSString *_id = [self _id];
+    %orig(valueForKey([gameDict objectForKey:_id]) ?: arg1);
 }
 %end
-
 
 
 
@@ -262,7 +278,6 @@ UIButton *anagramsButton;
 %hook HuntScene
 
 UIButton *huntButton;
-
 -(void)startGame {
     if(boolForKey(@"anagrams")) {
         huntButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -307,8 +322,6 @@ UIButton *huntButton;
 
 }
 %end
-
-
 
 
 %ctor {
