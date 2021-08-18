@@ -229,7 +229,6 @@ UIButton *anagramsButton;
 
     [alert addAction:defaultAction];
     [vc presentViewController:alert animated:YES completion:nil];
-    NSLog(@"PENIS %@", vc);
 }
 %end
 
