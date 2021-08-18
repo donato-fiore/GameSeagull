@@ -1,6 +1,6 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.3/com.donato.gameseagull_1.3_iphoneos-arm.deb), no cydia repo for now
+Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.3.1/com.donato.gameseagull_1.3.1_iphoneos-arm.deb), no cydia repo for now
 
 # Building & Installation
 ```SHELL
@@ -10,6 +10,11 @@ make package install
 ```
 
 # Changelog
+## [1.3.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.3.1/com.donato.gameseagull_1.3.1_iphoneos-arm.deb) - 2021-08-17
+### Added
+- Disabling hard mode in all 8 ball games
+### Changed
+- The code for win spoofing
 ## [1.3](https://github.com/donato-fiore/GameSeagull/releases/download/1.3/com.donato.gameseagull_1.3_iphoneos-arm.deb) - 2021-08-15
 ### Added
 - Icon to the settings preference
