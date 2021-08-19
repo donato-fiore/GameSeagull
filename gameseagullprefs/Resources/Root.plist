@@ -182,11 +182,41 @@
 				<key>defaults</key>
 				<string>com.donato.gameseagullprefs</string>
 				<key>key</key>
-				<string>anagrams</string>
+				<string>wordReveal</string>
 				<key>label</key>
-				<string>Word solver</string>
+				<string>Word reveal</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>autoAnagrams</string>
+				<key>label</key>
+				<string>Auto word solver (Anagrams Only)</string>
 			</dict>
 
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
+				<string>Sea Battle</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>seeShips</string>
+				<key>label</key>
+				<string>See enemy ships</string>
+			</dict>
 
 			<dict>
 				<key>cell</key>

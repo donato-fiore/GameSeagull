@@ -6,7 +6,6 @@
 #import <SpriteKit/SKNode.h>
 #import <SceneKit/SceneKit.h>
 
-
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
 @interface GameScene : SKScene {}
@@ -25,6 +24,9 @@
     NSMutableArray* blocks;
 }
 - (void)revealWords:(BOOL)arg1 ;
+-(void)enterWord;
+-(void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index;
+-(void)fillArr;
 @end
 
 @interface AnagramsWordList : SKNode {
@@ -38,6 +40,14 @@
 -(NSString *)_id;
 @end
 
+@interface SeaShip : SKNode
+@property (retain) SKSpriteNode * sprite; 
+@end
+
+@interface SeaScene : GameScene {
+    NSMutableArray* ships;
+}
+@end
 
 BOOL boolForKey(NSString *key) {
     static NSUserDefaults *prefs;
@@ -87,9 +97,9 @@ int valueForKey(NSString *key) {
     return %orig;
 }
 %end
-// 1 is 8 ball 2 is 8ball+ 3 is 9ball
-%hook PoolScene
 
+%hook PoolScene
+// 1 is 8 ball 2 is 8ball+ 3 is 9ball
 -(void)didMoveToView:(id)arg1 {
     %orig;
     if(boolForKey(@"noHardMode")) {
@@ -181,16 +191,20 @@ int valueForKey(NSString *key) {
 }
 %end
 
-
+@interface AnagramsBlock : SKNode {
+	SKLabelNode* letter;
+}
+@end
 
 // Anagrams
 %hook AnagramsScene
 
 UIButton *anagramsButton;
+UIButton *autoAnagramsButton;
 -(void)startGame {
-    if(boolForKey(@"anagrams")) {
+    if(boolForKey(@"wordReveal")) {
         anagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [anagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
+        [anagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 110, 10.0f, 100.0f, 40.f)];
         [anagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
         [anagramsButton setTitle:@"Reveal Words" forState:UIControlStateNormal];
         [anagramsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -200,6 +214,19 @@ UIButton *anagramsButton;
         [self.view addSubview:anagramsButton];
     }
 
+    if(boolForKey(@"autoAnagrams")) {
+        autoAnagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [autoAnagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 + 5, 10.0f, 100.0f, 40.f)];
+        [autoAnagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
+        [autoAnagramsButton setTitle:@"Auto" forState:UIControlStateNormal];
+        [autoAnagramsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [autoAnagramsButton addTarget:self action:@selector(fillArr) forControlEvents:UIControlEventTouchUpInside];
+        autoAnagramsButton.layer.cornerRadius = 14;
+
+        [self.view addSubview:autoAnagramsButton];
+
+    }
+    
     %orig;
 }
 
@@ -207,9 +234,45 @@ UIButton *anagramsButton;
     if(boolForKey(@"anagrams")) {
         [anagramsButton removeFromSuperview];
     }
+
+    if(boolForKey(@"autoAnagrams")) {
+        [autoAnagramsButton removeFromSuperview];
+    }
     %orig;
 }
 
+%new
+-(void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index {
+    NSString *word = words[index];
+    for(int i = 0; i < [word length]; i++) {
+        for(int j = 0; j < [blocks count]; j++) {
+            if([[blocks[j] valueForKey:@"letter"] isEqual:[NSString stringWithFormat:@"%c", [word characterAtIndex:i]]]) {
+                [wordsArr addObject:blocks[j]];
+                break;
+            }
+        }
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .17 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self enterWord];
+        [wordsArr removeAllObjects];
+        if (([words count] - 1) == index) {
+            return;
+        }
+        [self thingAt:words wordsArr:wordsArr blocks:blocks fromIndex:index + 1];
+     });
+}
+
+%new
+-(void)fillArr {
+    [self revealWords:YES];
+    NSArray *words = [[[[self valueForKey:@"wordList"] valueForKey:@"words_string"] stringByReplacingOccurrencesOfString:@"?" withString:@""] componentsSeparatedByString:@"|"];
+    if ([words count] == 0) {
+        return;
+    }
+    NSMutableArray* wordsArr = MSHookIvar<NSMutableArray*>(self, "answer");
+    NSMutableArray* blocks = MSHookIvar<NSMutableArray*>(self, "blocks");
+    [self thingAt:words wordsArr:wordsArr blocks:blocks fromIndex:0];
+}
 %new
 -(void)anagramsShow {
     NSMutableString *wordsString = [[NSMutableString alloc] init];
@@ -229,6 +292,7 @@ UIButton *anagramsButton;
 
     [alert addAction:defaultAction];
     [vc presentViewController:alert animated:YES completion:nil];
+    NSLog(@"PENIS %@", vc);
 }
 %end
 
@@ -293,6 +357,19 @@ UIButton *huntButton;
 }
 %end
 
+
+// Sea Battle
+%hook SeaScene
+-(void)update:(double)arg1 {
+    %orig;
+    if(boolForKey(@"seeShips")) {
+        for(SeaShip* ship in [self valueForKey:@"ships"]) {
+            ship.sprite.hidden = false;
+        }
+    }
+    
+}
+%end
 
 %ctor {
     %init;
