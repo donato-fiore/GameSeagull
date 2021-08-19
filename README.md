@@ -1,6 +1,6 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.3.1/com.donato.gameseagull_1.3.1_iphoneos-arm.deb), no cydia repo for now
+Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.4/com.donato.gameseagull_1.4_iphoneos-arm.deb), no cydia repo for now
 
 # Building & Installation
 ```SHELL
@@ -10,6 +10,10 @@ make package install
 ```
 
 # Changelog
+## [1.4](https://github.com/donato-fiore/GameSeagull/releases/download/1.4/com.donato.gameseagull_1.4_iphoneos-arm.deb) - 2021-08-18
+### Added
+- See enemy ships in sea battle
+- Auto anagrams word solver
 ## [1.3.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.3.1/com.donato.gameseagull_1.3.1_iphoneos-arm.deb) - 2021-08-17
 ### Added
 - Disabling hard mode in all 8 ball games
