@@ -1,6 +1,6 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.4/com.donato.gameseagull_1.4_iphoneos-arm.deb), no cydia repo for now
+Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5/com.donato.gameseagull_1.5_iphoneos-arm.deb), no cydia repo for now
 
 # Building & Installation
 ```SHELL
@@ -10,6 +10,10 @@ make package install
 ```
 
 # Changelog
+## [1.5](https://github.com/donato-fiore/GameSeagull/releases/download/1.5/com.donato.gameseagull_1.5_iphoneos-arm.deb) - 2021-08-21
+### Added
+- Infinite 8 ball lines
+- RGB 8 ball lines
 ## [1.4](https://github.com/donato-fiore/GameSeagull/releases/download/1.4/com.donato.gameseagull_1.4_iphoneos-arm.deb) - 2021-08-18
 ### Added
 - See enemy ships in sea battle
