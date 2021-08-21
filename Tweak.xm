@@ -1,14 +1,31 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
+#import <SceneKit/SceneKit.h>
 #import <SpriteKit/SKView.h>
-#import <UIKit/UIKit.h>
 #import <SceneKit/SCNView.h>
 #import <SpriteKit/SKNode.h>
-#import <SceneKit/SceneKit.h>
+#import <UIKit/UIKit.h>
+
+#include <mach-o/dyld.h>
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
-@interface GameScene : SKScene {}
+@interface GameScene : SKScene
+@end
+
+@interface PoolScene : GameScene {
+    SKShapeNode* canvas;
+}
+@end
+
+@interface PoolScene2 : GameScene {
+    SKShapeNode* canvas;
+}
+@end
+
+@interface PoolScene3 : GameScene {
+    SKShapeNode* canvas;
+}
 @end
 
 @interface BeerView : SCNView {
@@ -16,14 +33,19 @@
 }
 @end
 
+@interface DartsScene : GameScene {
+    NSString* mode;
+}
+@end
+
 @interface HuntScene : GameScene
-- (void)revealWords:(BOOL)arg1 ;
+-(void)revealWords:(BOOL)arg1 ;
 @end
 
 @interface AnagramsScene : GameScene {
     NSMutableArray* blocks;
 }
-- (void)revealWords:(BOOL)arg1 ;
+-(void)revealWords:(BOOL)arg1 ;
 -(void)enterWord;
 -(void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index;
 -(void)fillArr;
@@ -34,7 +56,7 @@
 }
 @end
 
-@interface GameIcon : UIView {}
+@interface GameIcon : UIView
 -(void)setWins:(int)arg1 ;
 -(NSString *)name ;
 -(NSString *)_id;
@@ -48,6 +70,7 @@
     NSMutableArray* ships;
 }
 @end
+
 
 BOOL boolForKey(NSString *key) {
     static NSUserDefaults *prefs;
@@ -67,8 +90,6 @@ int valueForKey(NSString *key) {
     return [value intValue];
 }
 
-
-
 // Archery
 %hook ArcheryScene
 -(void)setWind:(float)arg1 angle:(float)arg2 {
@@ -83,6 +104,7 @@ int valueForKey(NSString *key) {
 
 
 // 8 ball
+// for extended pool lines code, go to %ctor at the end of the file.
 %hook PoolBall
 -(BOOL)isStripes {
     if(boolForKey(@"showTrajectory")) {
@@ -98,13 +120,31 @@ int valueForKey(NSString *key) {
 }
 %end
 
+
+
 %hook PoolScene
 // 1 is 8 ball 2 is 8ball+ 3 is 9ball
+int _currentColorHue = 0;
+
+
 -(void)didMoveToView:(id)arg1 {
     %orig;
     if(boolForKey(@"noHardMode")) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
-    }    
+    }
+}
+
+-(void)update:(double)arg1 {
+    %orig;
+    if(boolForKey(@"rgbLine")) {
+        SKShapeNode* canvas = [self valueForKey:@"canvas"];
+        _currentColorHue++;
+        if (_currentColorHue > 360)
+        {
+            _currentColorHue = 0;
+        }
+        canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
+    }
 }
 %end
 
@@ -115,12 +155,37 @@ int valueForKey(NSString *key) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
+-(void)update:(double)arg1 {
+    %orig;
+    if(boolForKey(@"rgbLine")) {
+        SKShapeNode* canvas = [self valueForKey:@"canvas"];
+        _currentColorHue++;
+        if (_currentColorHue > 360)
+        {
+            _currentColorHue = 0;
+        }
+        canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
+    }
+}
 %end
+
 %hook PoolScene3
 -(void)didMoveToView:(id)arg1 {
     %orig;
     if(boolForKey(@"noHardMode")) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
+    }
+}
+-(void)update:(double)arg1 {
+    %orig;
+    if(boolForKey(@"rgbLine")) {
+        SKShapeNode* canvas = [self valueForKey:@"canvas"];
+        _currentColorHue++;
+        if (_currentColorHue > 360)
+        {
+            _currentColorHue = 0;
+        }
+        canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
     }
 }
 %end
@@ -141,17 +206,9 @@ int valueForKey(NSString *key) {
 // Darts
 %hook DartsScene
 -(void)showScore2:(int)arg1 full_score:(int)arg2 multi:(int)arg3 pos:(CGPoint)arg4 send_pos:(CGPoint)arg5 {
-    int dartMode = valueForKey(@"dartMode");
-    int num;
-    if(dartMode == 1) {
-        num = 101;
-    } else if(dartMode == 2) {
-        num = 201;
-    } else if(dartMode == 3) {
-        num = 301;
-    }
+    int dartMode = [[self valueForKey:@"mode"] intValue];
     if(boolForKey(@"oneDart")) {
-        return %orig(arg1, num, arg3, arg4, arg5);
+        return %orig(arg1, dartMode, arg3, arg4, arg5);
     } else {
         %orig;
     }
@@ -224,7 +281,6 @@ UIButton *autoAnagramsButton;
         autoAnagramsButton.layer.cornerRadius = 14;
 
         [self.view addSubview:autoAnagramsButton];
-
     }
     
     %orig;
@@ -238,6 +294,7 @@ UIButton *autoAnagramsButton;
     if(boolForKey(@"autoAnagrams")) {
         [autoAnagramsButton removeFromSuperview];
     }
+
     %orig;
 }
 
@@ -259,7 +316,7 @@ UIButton *autoAnagramsButton;
             return;
         }
         [self thingAt:words wordsArr:wordsArr blocks:blocks fromIndex:index + 1];
-     });
+    });
 }
 
 %new
@@ -366,10 +423,34 @@ UIButton *huntButton;
             ship.sprite.hidden = false;
         }
     }
-    
 }
 %end
 
+
 %ctor {
+    if(boolForKey(@"extTrajectory")) {
+
+        uint32_t newBallVal = 0x52A88F48;
+        uint32_t newCueVal = 0x1E67D002;
+
+        void *ballAddr1 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155684);
+        MSHookMemory(ballAddr1, &newBallVal, sizeof(newBallVal));
+        void *cueAddr1 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155750);
+        MSHookMemory(cueAddr1, &newCueVal, sizeof(newCueVal));
+
+
+        void *ballAddr2 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0xCA6B0);
+        MSHookMemory(ballAddr2, &newBallVal, sizeof(newBallVal));
+        void *cueAddr2 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0xCA77C);
+        MSHookMemory(cueAddr2, &newCueVal, sizeof(newCueVal));
+
+        void *ballAddr3 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155684);
+        MSHookMemory(ballAddr3, &newBallVal, sizeof(newBallVal));
+        void *cueAddr3 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x645C8);
+        MSHookMemory(cueAddr3, &newCueVal, sizeof(newCueVal));
+        
+    }
+
+
     %init;
 }

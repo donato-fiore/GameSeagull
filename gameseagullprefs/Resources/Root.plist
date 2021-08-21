@@ -50,6 +50,18 @@
 				<key>defaults</key>
 				<string>com.donato.gameseagullprefs</string>
 				<key>key</key>
+				<string>extTrajectory</string>
+				<key>label</key>
+				<string>Extend trajectory</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
 				<string>showTrajectory</string>
 				<key>label</key>
 				<string>Always show trajectory</string>
@@ -68,11 +80,23 @@
 			</dict>
 			<dict>
 				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>rgbLine</string>
+				<key>label</key>
+				<string>RGB guideline</string>
+			</dict>
+			<dict>
+				<key>cell</key>
 				<string>PSGroupCell</string>
 				<key>label</key>
 				<string>Darts</string>
 				<key>footerText</key>
-				<string>* One shot win is HIGHLY Suspicious</string>
+				<string>* HIGHLY Suspicious</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -85,28 +109,6 @@
 				<string>oneDart</string>
 				<key>label</key>
 				<string>One shot win</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSegmentCell</string>
-				<key>default</key>
-				<string>0</string>
-				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
-				<key>key</key>
-				<string>dartMode</string>
-				<key>validTitles</key>
-				<array>
-					<string>101</string>
-					<string>201</string>
-					<string>301</string>
-				</array>
-				<key>validValues</key>
-				<array>
-					<string>1</string>
-					<string>2</string>
-					<string>3</string>
-				</array>
 			</dict>
 			<dict>
 				<key>cell</key>
