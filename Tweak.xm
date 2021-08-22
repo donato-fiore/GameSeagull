@@ -77,7 +77,7 @@ BOOL boolForKey(NSString *key) {
     if (prefs == nil) {
         prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
     }
-    NSNumber *value = [prefs objectForKey:key] ?: @YES;
+    NSNumber *value = [prefs objectForKey:key] ?: @NO;
     return [value boolValue];
 }
 
