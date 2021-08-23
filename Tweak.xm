@@ -6,6 +6,7 @@
 #import <SpriteKit/SKNode.h>
 #import <UIKit/UIKit.h>
 
+#import <substrate.h>
 #include <mach-o/dyld.h>
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
@@ -71,6 +72,30 @@
 }
 @end
 
+@interface PaintTire : SKNode
+@property (strong) SKSpriteNode *target;
+@property (strong) SKSpriteNode *move;
+@property (strong) SKSpriteNode *enemy;
+-(void)showEnemy:(long long)arg1 ;
+-(void)removeChildAtIndex:(NSUInteger)index;
+@end
+
+@interface PaintScene : GameScene {
+    PaintTire *enemy;
+	PaintTire *target2;
+	PaintTire *target;
+}
+-(void)showEnemy;
+-(void)playReplay;
+-(void)hit_him;
+-(void)meShoot;
+// %new
+-(void)showEnemyButtonPressed;
+@end
+
+BOOL done = YES;
+
+
 
 BOOL boolForKey(NSString *key) {
     static NSUserDefaults *prefs;
@@ -98,6 +123,53 @@ int valueForKey(NSString *key) {
     } else {
         %orig;
     }
+}
+%end
+
+// Paint Ball
+%hook PaintScene
+-(void)didMoveToView:(id)arg1 {
+    %orig;
+
+    if (!boolForKey(@"showEnemy")) return;
+
+    UIButton *show = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+
+    // I'll change this later to use constraints and not frames
+    [show setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 100, 10.0f, 100.0f, 40.f)];
+    [show setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
+    [show setTitle:@"Show Enemy" forState:UIControlStateNormal];
+    [show setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [show addTarget:self action:@selector(showEnemyButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    show.layer.cornerRadius = 14;
+
+    [self.view addSubview:show];
+}
+-(void)playReplay {
+    %orig;
+    done = NO;
+    // hacky way to make sure we don't show the enemy while the replay is playing
+    // otherwise you're stuck with one of the images and it doesn't go away
+    // the replays are roughly 7 seconds
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 6.83*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        done = YES;
+    });
+}
+%new
+-(void)showEnemyButtonPressed {
+    if (!done) return;
+    done = NO;
+    [MSHookIvar<PaintTire*>(self, "enemy") showEnemy:0];
+    SKNode *person = [MSHookIvar<PaintTire*>(self, "enemy") children][0];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        SKAction *goAway = [SKAction moveTo:CGPointMake(0,100) duration:0.33];
+        [person runAction:goAway];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.33*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [MSHookIvar<PaintTire*>(self, "enemy") removeChildrenInArray:@[person]];
+        });
+        done = YES;
+    });
 }
 %end
 
