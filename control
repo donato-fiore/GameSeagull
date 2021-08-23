@@ -1,6 +1,6 @@
 Package: com.donato.gameseagull
 Name: GameSeagull
-Version: 1.5
+Version: 1.5.1
 Architecture: iphoneos-arm
 Description: Minor game pigeon "assistance"
 Maintainer: Donato Fiore
