@@ -15,6 +15,17 @@ HBPreferences *preferences;
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
 
+int valueForKey(NSString *key) {
+    static NSUserDefaults *prefs;
+    if (prefs == nil) {
+        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
+    }
+    NSNumber *value = [prefs objectForKey:key];
+    return [value intValue];
+}
+
+HBPreferences *preferences;
+
 @interface GameScene : SKScene
 @end
 
@@ -99,14 +110,6 @@ HBPreferences *preferences;
 
 BOOL done = YES;
 
-int valueForKey(NSString *key) {
-    static NSUserDefaults *prefs;
-    if (prefs == nil) {
-        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
-    }
-    NSNumber *value = [prefs objectForKey:key];
-    return [value intValue];
-}
 
 // Archery
 %hook ArcheryScene
@@ -433,7 +436,7 @@ UIButton *autoAnagramsButton;
 
 UIButton *huntButton;
 -(void)startGame {
-    if([preferences boolForKey:@"anagrams"]) {
+    if([preferences boolForKey:@"wordReveal"]) {
         huntButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [huntButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
         [huntButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -448,7 +451,7 @@ UIButton *huntButton;
 }
 
 -(void)toResult {
-    if([preferences boolForKey:@"anagrams"]) {
+    if([preferences boolForKey:@"wordReveal"]) {
         [huntButton removeFromSuperview];
     }
     %orig;
