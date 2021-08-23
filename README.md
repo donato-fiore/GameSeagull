@@ -1,6 +1,6 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5/com.donato.gameseagull_1.5_iphoneos-arm.deb), no cydia repo for now
+Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb), no cydia repo for now
 
 # Building & Installation
 ```SHELL
@@ -10,6 +10,9 @@ make package install
 ```
 
 # Changelog
+## [1.5.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb) - 2021-08-23
+### Changed
+- How the tweak loads the preferences, which was causing some users to not be able to use the tweak
 ## [1.5](https://github.com/donato-fiore/GameSeagull/releases/download/1.5/com.donato.gameseagull_1.5_iphoneos-arm.deb) - 2021-08-21
 ### Added
 - Infinite 8 ball lines
