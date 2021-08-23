@@ -5,10 +5,21 @@
 #import <SceneKit/SCNView.h>
 #import <SpriteKit/SKNode.h>
 #import <UIKit/UIKit.h>
-
+#import <Cephei/HBPreferences.h>
 #include <mach-o/dyld.h>
 
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
+
+int valueForKey(NSString *key) {
+    static NSUserDefaults *prefs;
+    if (prefs == nil) {
+        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
+    }
+    NSNumber *value = [prefs objectForKey:key];
+    return [value intValue];
+}
+
+HBPreferences *preferences;
 
 @interface GameScene : SKScene
 @end
@@ -72,28 +83,12 @@
 @end
 
 
-BOOL boolForKey(NSString *key) {
-    static NSUserDefaults *prefs;
-    if (prefs == nil) {
-        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
-    }
-    NSNumber *value = [prefs objectForKey:key] ?: @NO;
-    return [value boolValue];
-}
 
-int valueForKey(NSString *key) {
-    static NSUserDefaults *prefs;
-    if (prefs == nil) {
-        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
-    }
-    NSNumber *value = [prefs objectForKey:key];
-    return [value intValue];
-}
 
 // Archery
 %hook ArcheryScene
 -(void)setWind:(float)arg1 angle:(float)arg2 {
-    if(boolForKey(@"archeryNoWind")) {
+    if([preferences boolForKey:@"archeryNoWind"]) {
         %orig(0.0, 0.0);
     } else {
         %orig;
@@ -107,13 +102,13 @@ int valueForKey(NSString *key) {
 // for extended pool lines code, go to %ctor at the end of the file.
 %hook PoolBall
 -(BOOL)isStripes {
-    if(boolForKey(@"showTrajectory")) {
+    if([preferences boolForKey:@"showTrajectory"]) {
         return true;
     }
     return %orig;
 }
 -(BOOL)isSolid {
-    if(boolForKey(@"showTrajectory")) {
+    if([preferences boolForKey:@"showTrajectory"]) {
         return true;
     }
     return %orig;
@@ -129,18 +124,17 @@ int _currentColorHue = 0;
 
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if(boolForKey(@"noHardMode")) {
+    if([preferences boolForKey:@"noHardMode"]) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
 
 -(void)update:(double)arg1 {
     %orig;
-    if(boolForKey(@"rgbLine")) {
+    if([preferences boolForKey:@"rgbLine"]) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
-        if (_currentColorHue > 360)
-        {
+        if (_currentColorHue > 360) {
             _currentColorHue = 0;
         }
         canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
@@ -151,13 +145,13 @@ int _currentColorHue = 0;
 %hook PoolScene2
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if(boolForKey(@"noHardMode")) {
+    if([preferences boolForKey:@"noHardMode"]) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
 -(void)update:(double)arg1 {
     %orig;
-    if(boolForKey(@"rgbLine")) {
+    if([preferences boolForKey:@"rgbLine"]) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
         if (_currentColorHue > 360)
@@ -172,13 +166,13 @@ int _currentColorHue = 0;
 %hook PoolScene3
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if(boolForKey(@"noHardMode")) {
+    if([preferences boolForKey:@"noHardMode"]) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
 -(void)update:(double)arg1 {
     %orig;
-    if(boolForKey(@"rgbLine")) {
+    if([preferences boolForKey:@"rgbLine"]) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
         if (_currentColorHue > 360)
@@ -194,7 +188,7 @@ int _currentColorHue = 0;
 // Tanks
 %hook TanksWind
 -(void)setWind:(float)arg1 {
-    if(boolForKey(@"tankNoWind")) {
+    if([preferences boolForKey:@"tankNoWind"]) {
         return %orig(0.0);
     }
     return %orig;
@@ -207,7 +201,7 @@ int _currentColorHue = 0;
 %hook DartsScene
 -(void)showScore2:(int)arg1 full_score:(int)arg2 multi:(int)arg3 pos:(CGPoint)arg4 send_pos:(CGPoint)arg5 {
     int dartMode = [[self valueForKey:@"mode"] intValue];
-    if(boolForKey(@"oneDart")) {
+    if([preferences boolForKey:@"oneDart"]) {
         return %orig(arg1, dartMode, arg3, arg4, arg5);
     } else {
         %orig;
@@ -220,13 +214,13 @@ int _currentColorHue = 0;
 // Mini golf
 %hook GolfBall
 -(BOOL)inside {
-    if(boolForKey(@"holeInOne")) {
+    if([preferences boolForKey:@"holeInOne"]) {
         return true;
     }
     return %orig;
 }
 -(BOOL)hole {
-    if(boolForKey(@"holeInOne")) {
+    if([preferences boolForKey:@"holeInOne"]) {
         return true;
     }
     return %orig;
@@ -238,7 +232,7 @@ int _currentColorHue = 0;
 // Cup Pong
 %hook BeerView
 -(void)killCup:(id)arg1 {
-    if(boolForKey(@"cupInOne")) {
+    if([preferences boolForKey:@"cupInOne"]) {
         for(int i = 0; i < [[self valueForKey:@"cups"] count]; i++) {
             %orig([self valueForKey:@"cups"][i]);
         } 
@@ -259,7 +253,7 @@ int _currentColorHue = 0;
 UIButton *anagramsButton;
 UIButton *autoAnagramsButton;
 -(void)startGame {
-    if(boolForKey(@"wordReveal")) {
+    if([preferences boolForKey:@"wordReveal"]) {
         anagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [anagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 110, 10.0f, 100.0f, 40.f)];
         [anagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -271,7 +265,7 @@ UIButton *autoAnagramsButton;
         [self.view addSubview:anagramsButton];
     }
 
-    if(boolForKey(@"autoAnagrams")) {
+    if([preferences boolForKey:@"autoAnagrams"]) {
         autoAnagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [autoAnagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 + 5, 10.0f, 100.0f, 40.f)];
         [autoAnagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -287,11 +281,11 @@ UIButton *autoAnagramsButton;
 }
 
 -(void)toResult {
-    if(boolForKey(@"anagrams")) {
+    if([preferences boolForKey:@"anagrams"]) {
         [anagramsButton removeFromSuperview];
     }
 
-    if(boolForKey(@"autoAnagrams")) {
+    if([preferences boolForKey:@"autoAnagrams"]) {
         [autoAnagramsButton removeFromSuperview];
     }
 
@@ -369,7 +363,7 @@ UIButton *autoAnagramsButton;
 
 UIButton *huntButton;
 -(void)startGame {
-    if(boolForKey(@"anagrams")) {
+    if([preferences boolForKey:@"wordReveal"]) {
         huntButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [huntButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
         [huntButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -384,7 +378,7 @@ UIButton *huntButton;
 }
 
 -(void)toResult {
-    if(boolForKey(@"anagrams")) {
+    if([preferences boolForKey:@"wordReveal"]) {
         [huntButton removeFromSuperview];
     }
     %orig;
@@ -418,7 +412,7 @@ UIButton *huntButton;
 %hook SeaScene
 -(void)update:(double)arg1 {
     %orig;
-    if(boolForKey(@"seeShips")) {
+    if([preferences boolForKey:@"seeShips"]) {
         for(SeaShip* ship in [self valueForKey:@"ships"]) {
             ship.sprite.hidden = false;
         }
@@ -428,7 +422,10 @@ UIButton *huntButton;
 
 
 %ctor {
-    if(boolForKey(@"extTrajectory")) {
+
+    preferences = [[HBPreferences alloc] initWithIdentifier:@"com.donato.gameseagullprefs"];
+
+    if([preferences boolForKey:@"extTrajectory"]) {
 
         uint32_t newBallVal = 0x52A88F48;
         uint32_t newCueVal = 0x1E67D002;
