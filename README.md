@@ -1,7 +1,7 @@
 # Game~~Seagull~~Goose - Chr1s' Fork
 <hr>
 
-### This fork is kept up to date with fiore's but it includes some more games and whatever else I want to add (@fiore feel free to use what's in here in GameSeagull)
+### This fork is kept up to date with fiore's but it includes some more games and whatever else I want to add (@fiore feel free to use what's in here for GameSeagull)
 #### Also checkout [Chr1sDev/GameGoose](https://github.com/chr1sdev/gamegoose) For the latest GamePigeon Headers and unencrypted binary
 <hr>
 <br>
