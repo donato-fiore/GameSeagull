@@ -1,4 +1,4 @@
-# Game~~Seagull~~Goose - Chr1s' Fork
+# GameGoose - Chr1s' Fork of GameSeagull
 <hr>
 
 ### This fork is kept up to date with fiore's but it includes some more games and whatever else I want to add (@fiore feel free to use what's in here for GameSeagull)
