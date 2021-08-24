@@ -1,4 +1,4 @@
-# GameSeagull
+# Game~~Seagull~~Goose - Chr1s' Fork
 
 Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb), no cydia repo for now
 

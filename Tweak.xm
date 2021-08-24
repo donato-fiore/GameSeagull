@@ -5,26 +5,12 @@
 #import <SceneKit/SCNView.h>
 #import <SpriteKit/SKNode.h>
 #import <UIKit/UIKit.h>
-
 #import <Cephei/HBPreferences.h>
 
 HBPreferences *preferences;
 
 #import <substrate.h>
 #include <mach-o/dyld.h>
-
-#define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
-
-int valueForKey(NSString *key) {
-    static NSUserDefaults *prefs;
-    if (prefs == nil) {
-        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
-    }
-    NSNumber *value = [prefs objectForKey:key];
-    return [value intValue];
-}
-
-HBPreferences *preferences;
 
 @interface GameScene : SKScene
 @end
@@ -425,7 +411,7 @@ UIButton *autoAnagramsButton;
 %hook GameIcon
 -(void)setWins:(int)arg1 {
     NSString *_id = [self _id];
-    %orig(valueForKey(_id) ?: arg1);
+    %orig([preferences integerForKey:_id] ?: arg1);
 }
 %end
 

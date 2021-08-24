@@ -1,5 +1,5 @@
 TARGET = iphone:latest:13.0
-INSTALL_TARGET_PROCESSES = SpringBoard
+INSTALL_TARGET_PROCESSES = MobileSMS
 
 ARCHS = arm64 arm64e
 
