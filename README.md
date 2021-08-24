@@ -1,5 +1,6 @@
 # Game~~Seagull~~Goose - Chr1s' Fork
 ### This fork is kept up to date with fiore's but it includes some more games and whatever else I want to add (@fiore feel free to use what's in here in GameSeagull)
+## Also checkout [Chr1sDev/GameGoose](https://github.com/chr1sdev/gamegoose) For the latest GamePigeon Headers and unencrypted binary
 
 Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb), no cydia repo for now
 
