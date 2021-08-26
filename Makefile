@@ -7,7 +7,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = GameSeagull
 
-$(TWEAK_NAME)_FILES = Tweak.xm
+$(TWEAK_NAME)_FILES = $(wildcard *.xm)
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc
 $(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei
 $(TWEAK_NAME)_LIBRARIES = substrate
