@@ -224,6 +224,25 @@
 				<key>cell</key>
 				<string>PSGroupCell</string>
 				<key>label</key>
+				<string>Paintball</string>
+			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.donato.gameseagullprefs</string>
+				<key>key</key>
+				<string>showEnemy</string>
+				<key>label</key>
+				<string>Show enemy</string>
+			</dict>
+
+			<dict>
+				<key>cell</key>
+				<string>PSGroupCell</string>
+				<key>label</key>
 				<string>Other</string>
 			</dict>
 			<dict>
@@ -245,16 +264,6 @@
 				<string>GameSeagull by Donato</string>
 				<key>isStaticText</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>action</key>
-				<string>apply:</string>
-				<key>cell</key>
-				<string>PSButtonCell</string>
-				<key>cellClass</key>
-				<string>HBTintedTableCell</string>
-				<key>label</key>
-				<string>Apply</string>
 			</dict>
 
 			<dict>

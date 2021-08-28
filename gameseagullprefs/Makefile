@@ -5,11 +5,11 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = gameseagullprefs
 
-gameseagullprefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
-gameseagullprefs_FILES = GSPRootListController.m
-gameseagullprefs_FRAMEWORKS = UIKit
-gameseagullprefs_PRIVATE_FRAMEWORKS = Preferences
-gameseagullprefs_INSTALL_PATH = /Library/PreferenceBundles
-gameseagullprefs_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
+$(BUNDLE_NAME)_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
+$(BUNDLE_NAME)_FILES = GSPRootListController.m
+$(BUNDLE_NAME)_FRAMEWORKS = UIKit
+$(BUNDLE_NAME)_PRIVATE_FRAMEWORKS = Preferences
+$(BUNDLE_NAME)_INSTALL_PATH = /Library/PreferenceBundles
+$(BUNDLE_NAME)_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
 
 include $(THEOS_MAKE_PATH)/bundle.mk
