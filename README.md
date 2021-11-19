@@ -1,6 +1,7 @@
 # GameSeagull
 
 Get it on my [repo](https://donato-fiore.github.io/repo)
+
 Latest version direct download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.6/com.fiore.gameseagull_1.6_iphoneos-arm.deb)
 # Building & Installation
 ```SHELL
