@@ -22,7 +22,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>20 questions</string>
 				<key>key</key>
@@ -34,7 +34,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>8 ball</string>
 				<key>key</key>
@@ -46,7 +46,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>9 ball</string>
 				<key>key</key>
@@ -59,7 +59,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Anagrams</string>
 				<key>key</key>
@@ -71,7 +71,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Archery</string>
 				<key>key</key>
@@ -83,7 +83,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Basketball</string>
 				<key>key</key>
@@ -95,7 +95,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Checkers</string>
 				<key>key</key>
@@ -107,7 +107,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Chess</string>
 				<key>key</key>
@@ -119,7 +119,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Crazy 8</string>
 				<key>key</key>
@@ -131,7 +131,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Cup Pong</string>
 				<key>key</key>
@@ -143,7 +143,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Darts</string>
 				<key>key</key>
@@ -155,9 +155,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Dots &#38; boxes</string>
+				<string>Dots &#38; Boxes</string>
 				<key>key</key>
 				<string>dots</string>
 				<key>isNumeric</key>
@@ -167,7 +167,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Filler</string>
 				<key>key</key>
@@ -179,9 +179,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Four in a row</string>
+				<string>Four in a Row</string>
 				<key>key</key>
 				<string>connect</string>
 				<key>isNumeric</key>
@@ -191,7 +191,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Gomoku</string>
 				<key>key</key>
@@ -203,7 +203,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Knockout</string>
 				<key>key</key>
@@ -215,7 +215,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Mancala</string>
 				<key>key</key>
@@ -227,9 +227,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>golf</string>
+				<string>Minigolf</string>
 				<key>key</key>
 				<string>golf_wins</string>
 				<key>isNumeric</key>
@@ -240,7 +240,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Paintball</string>
 				<key>key</key>
@@ -252,7 +252,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Riversi</string>
 				<key>key</key>
@@ -264,9 +264,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Sea battle</string>
+				<string>Sea Battle</string>
 				<key>key</key>
 				<string>sea</string>
 				<key>isNumeric</key>
@@ -276,7 +276,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Shuffleboard</string>
 				<key>key</key>
@@ -288,7 +288,7 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Tanks</string>
 				<key>key</key>
@@ -300,9 +300,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Word bites</string>
+				<string>Word Bites</string>
 				<key>key</key>
 				<string>wordbites</string>
 				<key>isNumeric</key>
@@ -312,9 +312,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Word games</string>
+				<string>Word Games</string>
 				<key>key</key>
 				<string>wordgames</string>
 				<key>isNumeric</key>
@@ -324,9 +324,9 @@
 				<key>cell</key>
 				<string>PSEditTextCell</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
-				<string>Word hunt</string>
+				<string>Word Hunt</string>
 				<key>key</key>
 				<string>hunt</string>
 				<key>isNumeric</key>

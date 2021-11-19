@@ -1,10 +1,11 @@
-#import <Preferences/PSListController.h>
-#import <CepheiPrefs/HBListController.h>
-#import <CepheiPrefs/HBAppearanceSettings.h>
-#import <Cephei/HBPreferences.h>
-#import "spawn.h"
+#include <Preferences/PSListController.h>
+#include <CepheiPrefs/HBListController.h>
+#include <CepheiPrefs/HBAppearanceSettings.h>
+#include <Cephei/HBPreferences.h>
+#include "spawn.h"
 
 @interface GSPRootListController : PSListController
+@property (nonatomic, retain) UIBarButtonItem *applyButton;
 @end
 
 @interface WinSpooferController : PSListController

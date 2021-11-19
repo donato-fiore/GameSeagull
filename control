@@ -1,9 +1,10 @@
-Package: com.donato.gameseagull
+Package: com.fiore.gameseagull
 Name: GameSeagull
-Version: 1.5.1
+Version: 1.6
 Architecture: iphoneos-arm
 Description: Minor game pigeon "assistance"
 Maintainer: Donato Fiore
 Author: Donato Fiore
 Section: Tweaks
 Depends: mobilesubstrate, ws.hbang.common (>= 1.11), firmware (>= 13.0)
+Replaces: com.donato.gameseagull

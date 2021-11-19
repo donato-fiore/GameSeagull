@@ -1,7 +1,7 @@
 #include "GSPRootListController.h"
-#import <CepheiPrefs/HBAppearanceSettings.h>
-#import <Cephei/HBPreferences.h>
-#import <CepheiPrefs/HBRootListController.h>
+#include <CepheiPrefs/HBAppearanceSettings.h>
+#include <Cephei/HBPreferences.h>
+#include <CepheiPrefs/HBRootListController.h>
 
 @implementation GSPRootListController
 
@@ -21,6 +21,13 @@
         appearanceSettings.tintColor = [UIColor colorWithRed:1.0f green:0.81f blue:0.86f alpha:1];
         appearanceSettings.tableViewCellSeparatorColor = [UIColor colorWithWhite:0 alpha:0];
         self.hb_appearanceSettings = appearanceSettings;
+
+		self.applyButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" 
+                                    style:UIBarButtonItemStylePlain
+                                    target:self 
+                                    action:@selector(apply:)];
+        self.applyButton.tintColor = [UIColor colorWithRed:1.0f green:0.81f blue:0.86f alpha:1];
+		self.navigationItem.rightBarButtonItem = self.applyButton;
     }
     return self;
 }
@@ -34,7 +41,9 @@
 	const char *args[] = {"sh", "-c", "killall MobileSMS", NULL};
 	posix_spawn(&pid, "/bin/sh", NULL, NULL, (char *const *)args, NULL);
 }
-
+-(void)twitter {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/TheDonatoFiore"] options:@{} completionHandler:nil];
+}
 @end
 
 @implementation WinSpooferController

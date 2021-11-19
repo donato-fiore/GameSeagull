@@ -10,7 +10,7 @@
 				<key>headerCellClass</key>
 				<string>HBPackageNameHeaderCell</string>
 				<key>packageIdentifier</key>
-				<string>com.donato.gameseagull</string>
+				<string>com.fiore.gameseagull</string>
 				<key>packageNameOverride</key>
 				<string>GameSeagull</string>
 				<key>titleColor</key>
@@ -30,12 +30,26 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>archeryNoWind</string>
 				<key>label</key>
-				<string>Disable Wind</string>
+				<string>Disable wind</string>
 			</dict>
+
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.fiore.gameseagullprefs</string>
+				<key>key</key>
+				<string>archeryClose</string>
+				<key>label</key>
+				<string>Always 50ft target</string>
+			</dict>
+
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
@@ -48,7 +62,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>extTrajectory</string>
 				<key>label</key>
@@ -60,7 +74,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>showTrajectory</string>
 				<key>label</key>
@@ -72,7 +86,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>noHardMode</string>
 				<key>label</key>
@@ -84,12 +98,25 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>rgbLine</string>
 				<key>label</key>
 				<string>RGB guideline</string>
 			</dict>
+			<dict>
+				<key>cell</key>
+				<string>PSSwitchCell</string>
+				<key>default</key>
+				<false/>
+				<key>defaults</key>
+				<string>com.fiore.gameseagullprefs</string>
+				<key>key</key>
+				<string>moveCue</string>
+				<key>label</key>
+				<string>Always move cue ball</string>
+			</dict>
+
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
@@ -104,7 +131,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>oneDart</string>
 				<key>label</key>
@@ -122,11 +149,11 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>tankNoWind</string>
 				<key>label</key>
-				<string>Disable Wind</string>
+				<string>Disable wind</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -142,11 +169,11 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>holeInOne</string>
 				<key>label</key>
-				<string>Always Hole in One</string>
+				<string>Always hole in one</string>
 			</dict>
 
 			<dict>
@@ -163,11 +190,11 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>cupInOne</string>
 				<key>label</key>
-				<string>One Shot Win</string>
+				<string>One shot win</string>
 			</dict>
 
 			<dict>
@@ -182,7 +209,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>wordReveal</string>
 				<key>label</key>
@@ -194,7 +221,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>autoAnagrams</string>
 				<key>label</key>
@@ -213,7 +240,7 @@
 				<key>default</key>
 				<false/>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>key</key>
 				<string>seeShips</string>
 				<key>label</key>
@@ -223,8 +250,6 @@
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Other</string>
 			</dict>
 			<dict>
 				<key>cell</key>
@@ -234,29 +259,34 @@
 				<key>detail</key>
 				<string>WinSpooferController</string>
 				<key>defaults</key>
-				<string>com.donato.gameseagullprefs</string>
+				<string>com.fiore.gameseagullprefs</string>
 				<key>label</key>
 				<string>Spoof wins</string>
 			</dict>
+
 			<dict>
 				<key>cell</key>
 				<string>PSGroupCell</string>
-				<key>footerText</key>
-				<string>GameSeagull by Donato</string>
-				<key>isStaticText</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>action</key>
-				<string>apply:</string>
-				<key>cell</key>
-				<string>PSButtonCell</string>
-				<key>cellClass</key>
-				<string>HBTintedTableCell</string>
 				<key>label</key>
-				<string>Apply</string>
+				<string>Other</string>
 			</dict>
 
+			<dict>
+				<key>big</key>
+				<true/>
+				<key>cellClass</key>
+				<string>HBTwitterCell</string>
+				<key>height</key>
+				<integer>56</integer>
+				<key>label</key>
+				<string>Donato Fiore</string>
+				<key>user</key>
+				<string>TheDonatoFiore</string>
+				<key>action</key>
+				<string>twitter</string>
+			</dict>
+
+			
 			<dict>
 				<key>cellClass</key>
 				<string>HBLinkTableCell</string>

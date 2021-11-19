@@ -1,94 +1,27 @@
-#import <Foundation/Foundation.h>
-#import <SpriteKit/SpriteKit.h>
-#import <SceneKit/SceneKit.h>
-#import <SpriteKit/SKView.h>
-#import <SceneKit/SCNView.h>
-#import <SpriteKit/SKNode.h>
-#import <UIKit/UIKit.h>
-#import <Cephei/HBPreferences.h>
+#include <Cephei/HBPreferences.h>
 #include <mach-o/dyld.h>
-
-#define PLIST_PATH @"/var/mobile/Library/Preferences/com.donato.gameseagullprefs.plist"
-
-int valueForKey(NSString *key) {
-    static NSUserDefaults *prefs;
-    if (prefs == nil) {
-        prefs = [[NSUserDefaults alloc] initWithSuiteName:PLIST_PATH];
-    }
-    NSNumber *value = [prefs objectForKey:key];
-    return [value intValue];
-}
+#include "headers.h"
 
 HBPreferences *preferences;
-
-@interface GameScene : SKScene
-@end
-
-@interface PoolScene : GameScene {
-    SKShapeNode* canvas;
-}
-@end
-
-@interface PoolScene2 : GameScene {
-    SKShapeNode* canvas;
-}
-@end
-
-@interface PoolScene3 : GameScene {
-    SKShapeNode* canvas;
-}
-@end
-
-@interface BeerView : SCNView {
-    NSMutableArray* cups;
-}
-@end
-
-@interface DartsScene : GameScene {
-    NSString* mode;
-}
-@end
-
-@interface HuntScene : GameScene
--(void)revealWords:(BOOL)arg1 ;
-@end
-
-@interface AnagramsScene : GameScene {
-    NSMutableArray* blocks;
-}
--(void)revealWords:(BOOL)arg1 ;
--(void)enterWord;
--(void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index;
--(void)fillArr;
-@end
-
-@interface AnagramsWordList : SKNode {
-	NSString* words_string;
-}
-@end
-
-@interface GameIcon : UIView
--(void)setWins:(int)arg1 ;
--(NSString *)name ;
--(NSString *)_id;
-@end
-
-@interface SeaShip : SKNode
-@property (retain) SKSpriteNode * sprite; 
-@end
-
-@interface SeaScene : GameScene {
-    NSMutableArray* ships;
-}
-@end
-
-
-
+static BOOL archeryNoWind;
+static BOOL showTrajectory;
+static BOOL noHardMode;
+static BOOL rgbLine;
+static BOOL tankNoWind;
+static BOOL oneDart;
+static BOOL holeInOne;
+static BOOL oneCup;
+static BOOL autoAnagrams;
+static BOOL wordReveal;
+static BOOL seeShips;
+static BOOL extTrajectory;
+static BOOL moveCue;
+static BOOL archeryClose;
 
 // Archery
 %hook ArcheryScene
 -(void)setWind:(float)arg1 angle:(float)arg2 {
-    if([preferences boolForKey:@"archeryNoWind"]) {
+    if(archeryNoWind) {
         %orig(0.0, 0.0);
     } else {
         %orig;
@@ -96,19 +29,27 @@ HBPreferences *preferences;
 }
 %end
 
-
+%hook ArcheryView
+-(void)setTargetDistance:(int)arg1 {
+    if(archeryClose) {
+        %orig(50);
+    } else {
+        %orig;
+    }
+}
+%end
 
 // 8 ball
 // for extended pool lines code, go to %ctor at the end of the file.
 %hook PoolBall
 -(BOOL)isStripes {
-    if([preferences boolForKey:@"showTrajectory"]) {
+    if(showTrajectory) {
         return true;
     }
     return %orig;
 }
 -(BOOL)isSolid {
-    if([preferences boolForKey:@"showTrajectory"]) {
+    if(showTrajectory) {
         return true;
     }
     return %orig;
@@ -124,14 +65,14 @@ int _currentColorHue = 0;
 
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if([preferences boolForKey:@"noHardMode"]) {
-        MSHookIvar<NSString*>(self, "mode") = @"n";
+    if(noHardMode) {
+        MSHookIvar<NSString *>(self, "mode") = @"n";
     }
 }
 
 -(void)update:(double)arg1 {
     %orig;
-    if([preferences boolForKey:@"rgbLine"]) {
+    if(rgbLine) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
         if (_currentColorHue > 360) {
@@ -139,19 +80,22 @@ int _currentColorHue = 0;
         }
         canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
     }
+    if(moveCue) {
+        MSHookIvar<BOOL>(self, "move_white") = true;
+    }
 }
 %end
 
 %hook PoolScene2
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if([preferences boolForKey:@"noHardMode"]) {
+    if(noHardMode) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
 -(void)update:(double)arg1 {
     %orig;
-    if([preferences boolForKey:@"rgbLine"]) {
+    if(rgbLine) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
         if (_currentColorHue > 360)
@@ -159,6 +103,9 @@ int _currentColorHue = 0;
             _currentColorHue = 0;
         }
         canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
+    }
+    if(moveCue) {
+        MSHookIvar<BOOL>(self, "move_white") = true;
     }
 }
 %end
@@ -166,13 +113,13 @@ int _currentColorHue = 0;
 %hook PoolScene3
 -(void)didMoveToView:(id)arg1 {
     %orig;
-    if([preferences boolForKey:@"noHardMode"]) {
+    if(noHardMode) {
         MSHookIvar<NSString*>(self, "mode") = @"n";
     }
 }
 -(void)update:(double)arg1 {
     %orig;
-    if([preferences boolForKey:@"rgbLine"]) {
+    if(rgbLine) {
         SKShapeNode* canvas = [self valueForKey:@"canvas"];
         _currentColorHue++;
         if (_currentColorHue > 360)
@@ -180,6 +127,9 @@ int _currentColorHue = 0;
             _currentColorHue = 0;
         }
         canvas.strokeColor = [[UIColor alloc] initWithHue:_currentColorHue/360.0f saturation:1 brightness:1 alpha:1];
+    }
+    if(moveCue) {
+        MSHookIvar<BOOL>(self, "move_white") = true;
     }
 }
 %end
@@ -188,7 +138,7 @@ int _currentColorHue = 0;
 // Tanks
 %hook TanksWind
 -(void)setWind:(float)arg1 {
-    if([preferences boolForKey:@"tankNoWind"]) {
+    if(tankNoWind) {
         return %orig(0.0);
     }
     return %orig;
@@ -201,7 +151,7 @@ int _currentColorHue = 0;
 %hook DartsScene
 -(void)showScore2:(int)arg1 full_score:(int)arg2 multi:(int)arg3 pos:(CGPoint)arg4 send_pos:(CGPoint)arg5 {
     int dartMode = [[self valueForKey:@"mode"] intValue];
-    if([preferences boolForKey:@"oneDart"]) {
+    if(oneDart) {
         return %orig(arg1, dartMode, arg3, arg4, arg5);
     } else {
         %orig;
@@ -214,13 +164,13 @@ int _currentColorHue = 0;
 // Mini golf
 %hook GolfBall
 -(BOOL)inside {
-    if([preferences boolForKey:@"holeInOne"]) {
+    if(holeInOne) {
         return true;
     }
     return %orig;
 }
 -(BOOL)hole {
-    if([preferences boolForKey:@"holeInOne"]) {
+    if(holeInOne) {
         return true;
     }
     return %orig;
@@ -232,7 +182,7 @@ int _currentColorHue = 0;
 // Cup Pong
 %hook BeerView
 -(void)killCup:(id)arg1 {
-    if([preferences boolForKey:@"cupInOne"]) {
+    if(oneCup) {
         for(int i = 0; i < [[self valueForKey:@"cups"] count]; i++) {
             %orig([self valueForKey:@"cups"][i]);
         } 
@@ -242,10 +192,7 @@ int _currentColorHue = 0;
 }
 %end
 
-@interface AnagramsBlock : SKNode {
-	SKLabelNode* letter;
-}
-@end
+
 
 // Anagrams
 %hook AnagramsScene
@@ -253,7 +200,7 @@ int _currentColorHue = 0;
 UIButton *anagramsButton;
 UIButton *autoAnagramsButton;
 -(void)startGame {
-    if([preferences boolForKey:@"wordReveal"]) {
+    if(wordReveal) {
         anagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [anagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 110, 10.0f, 100.0f, 40.f)];
         [anagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -265,7 +212,7 @@ UIButton *autoAnagramsButton;
         [self.view addSubview:anagramsButton];
     }
 
-    if([preferences boolForKey:@"autoAnagrams"]) {
+    if(autoAnagrams) {
         autoAnagramsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [autoAnagramsButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 + 5, 10.0f, 100.0f, 40.f)];
         [autoAnagramsButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -281,11 +228,11 @@ UIButton *autoAnagramsButton;
 }
 
 -(void)toResult {
-    if([preferences boolForKey:@"anagrams"]) {
+    if(wordReveal) {
         [anagramsButton removeFromSuperview];
     }
 
-    if([preferences boolForKey:@"autoAnagrams"]) {
+    if(autoAnagrams) {
         [autoAnagramsButton removeFromSuperview];
     }
 
@@ -351,8 +298,11 @@ UIButton *autoAnagramsButton;
 // Win Spoofer
 %hook GameIcon
 -(void)setWins:(int)arg1 {
-    NSString *_id = [self _id];
-    %orig(valueForKey(_id) ?: arg1);
+    //%orig;
+    NSString* _id = [self _id];
+    int wins = [preferences integerForKey:_id];
+    %orig(wins ?: arg1);
+    //%orig(valueForKey(_id) ?: arg1);
 }
 %end
 
@@ -363,7 +313,7 @@ UIButton *autoAnagramsButton;
 
 UIButton *huntButton;
 -(void)startGame {
-    if([preferences boolForKey:@"wordReveal"]) {
+    if(wordReveal) {
         huntButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [huntButton setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width / 2 - 50, 10.0f, 100.0f, 40.f)];
         [huntButton setBackgroundColor:[UIColor colorWithRed:(255/255.0) green:(255/255.0) blue:(255/255.0) alpha:.85]];
@@ -378,7 +328,7 @@ UIButton *huntButton;
 }
 
 -(void)toResult {
-    if([preferences boolForKey:@"wordReveal"]) {
+    if(wordReveal) {
         [huntButton removeFromSuperview];
     }
     %orig;
@@ -412,7 +362,7 @@ UIButton *huntButton;
 %hook SeaScene
 -(void)update:(double)arg1 {
     %orig;
-    if([preferences boolForKey:@"seeShips"]) {
+    if(seeShips) {
         for(SeaShip* ship in [self valueForKey:@"ships"]) {
             ship.sprite.hidden = false;
         }
@@ -420,34 +370,43 @@ UIButton *huntButton;
 }
 %end
 
-
 %ctor {
+    preferences = [[HBPreferences alloc] initWithIdentifier:@"com.fiore.gameseagullprefs"];
+    [preferences registerBool:&archeryNoWind default:NO forKey:@"archeryNoWind"];
+    [preferences registerBool:&autoAnagrams default:NO forKey:@"autoAnagrams"];
+    [preferences registerBool:&extTrajectory default:NO forKey:@"extTrajectory"];
+    [preferences registerBool:&holeInOne default:NO forKey:@"holeInOne"];
+    [preferences registerBool:&noHardMode default:NO forKey:@"noHardMode"];
+    [preferences registerBool:&oneCup default:NO forKey:@"oneCup"];
+    [preferences registerBool:&oneDart default:NO forKey:@"oneDart"];
+    [preferences registerBool:&rgbLine default:NO forKey:@"rgbLine"];
+    [preferences registerBool:&seeShips default:NO forKey:@"seeShips"];
+    [preferences registerBool:&showTrajectory default:NO forKey:@"showTrajectory"];
+    [preferences registerBool:&tankNoWind default:NO forKey:@"tankNoWind"];
+    [preferences registerBool:&wordReveal default:NO forKey:@"wordReveal"];
+    [preferences registerBool:&moveCue default:NO forKey:@"moveCue"];
+    [preferences registerBool:&archeryClose default:NO forKey:@"archeryClose"];
 
-    preferences = [[HBPreferences alloc] initWithIdentifier:@"com.donato.gameseagullprefs"];
+    if(extTrajectory) {
 
-    if([preferences boolForKey:@"extTrajectory"]) {
+        uint32_t newBallVal = 0x52A88F48, newCueVal = 0x1E67D002;
+        void *ballAddr, *cueAddr;
 
-        uint32_t newBallVal = 0x52A88F48;
-        uint32_t newCueVal = 0x1E67D002;
+        ballAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155684);
+        MSHookMemory(ballAddr, &newBallVal, sizeof(newBallVal));
+        cueAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155750);
+        MSHookMemory(cueAddr, &newCueVal, sizeof(newCueVal));
 
-        void *ballAddr1 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155684);
-        MSHookMemory(ballAddr1, &newBallVal, sizeof(newBallVal));
-        void *cueAddr1 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155750);
-        MSHookMemory(cueAddr1, &newCueVal, sizeof(newCueVal));
+        ballAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x0CA6B0);
+        MSHookMemory(ballAddr, &newBallVal, sizeof(newBallVal));
+        cueAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x0CA77C);
+        MSHookMemory(cueAddr, &newCueVal, sizeof(newCueVal));
 
-
-        void *ballAddr2 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0xCA6B0);
-        MSHookMemory(ballAddr2, &newBallVal, sizeof(newBallVal));
-        void *cueAddr2 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0xCA77C);
-        MSHookMemory(cueAddr2, &newCueVal, sizeof(newCueVal));
-
-        void *ballAddr3 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x155684);
-        MSHookMemory(ballAddr3, &newBallVal, sizeof(newBallVal));
-        void *cueAddr3 = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x645C8);
-        MSHookMemory(cueAddr3, &newCueVal, sizeof(newCueVal));
+        ballAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x0644FC);
+        MSHookMemory(ballAddr, &newBallVal, sizeof(newBallVal));
+        cueAddr = (void *)((unsigned char *)_dyld_get_image_header(0) + 0x0645C8);
+        MSHookMemory(cueAddr, &newCueVal, sizeof(newCueVal));
         
     }
-
-
     %init;
 }
