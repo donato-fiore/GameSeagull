@@ -45,7 +45,7 @@
 @end
 
 @interface AnagramsWordList : SKNode {
-	NSString *words_string;
+    NSString *words_string;
 }
 @end
 
