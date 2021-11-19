@@ -1,7 +1,7 @@
 # GameSeagull
 
-Latest version download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb), no cydia repo for now
-
+Get it on my [repo](https://donato-fiore.github.io/repo)
+Latest version direct download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.6/com.fiore.gameseagull_1.6_iphoneos-arm.deb)
 # Building & Installation
 ```SHELL
 git clone https://github.com/donato-fiore/GameSeagull.git
@@ -10,6 +10,12 @@ make package install
 ```
 
 # Changelog
+## [1.6](https://github.com/donato-fiore/GameSeagull/releases/download/1.6/com.fiore.gameseagull_1.6_iphoneos-arm.deb) - 2021-11-19
+### Changed
+- How the tweak uses prefs (hopefully this works)
+### Added
+- Always move 8 ball cue
+- Archery target always set to 50ft away
 ## [1.5.1](https://github.com/donato-fiore/GameSeagull/releases/download/1.5.1/com.donato.gameseagull_1.5.1_iphoneos-arm.deb) - 2021-08-23
 ### Changed
 - How the tweak loads the preferences, which was causing some users to not be able to use the tweak (Thank you [Chr1s](https://github.com/Chr1sDev))
