@@ -3,20 +3,20 @@
 #include "headers.h"
 
 HBPreferences *preferences;
-static BOOL archeryNoWind;
-static BOOL showTrajectory;
-static BOOL noHardMode;
-static BOOL rgbLine;
-static BOOL tankNoWind;
-static BOOL oneDart;
-static BOOL holeInOne;
-static BOOL oneCup;
-static BOOL autoAnagrams;
-static BOOL wordReveal;
-static BOOL seeShips;
-static BOOL extTrajectory;
-static BOOL moveCue;
-static BOOL archeryClose;
+BOOL archeryNoWind;
+BOOL showTrajectory;
+BOOL noHardMode;
+BOOL rgbLine;
+BOOL tankNoWind;
+BOOL oneDart;
+BOOL holeInOne;
+BOOL oneCup;
+BOOL autoAnagrams;
+BOOL wordReveal;
+BOOL seeShips;
+BOOL extTrajectory;
+BOOL moveCue;
+BOOL archeryClose;
 
 // Archery
 %hook ArcheryScene
