@@ -1,7 +1,4 @@
 #include "GSPRootListController.h"
-#include <CepheiPrefs/HBAppearanceSettings.h>
-#include <Cephei/HBPreferences.h>
-#include <CepheiPrefs/HBRootListController.h>
 
 @implementation GSPRootListController
 
