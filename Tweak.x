@@ -2,7 +2,7 @@
 @import UIKit;
 
 #import "Utils.h"
-#import "Headers.h"
+#import "headers.h"
 
 bool archeryDisableWind;
 bool archeryDisableTimer;
