@@ -12,7 +12,7 @@ cd GameSeagull
 ```
 
 # Changelog
-## [2.0](https://github.com/donato-fiore/GameSeagull/releases/download/2.0/com.fiore.gameseagull_2.0.0_iphoneos-arm.deb) - 2024-01-28
+## [2.0](https://github.com/donato-fiore/GameSeagull/releases/tag/2.0) - 2024-01-28
 ### Updates:
 - Rootless and rootful support
 - Rebuilt preferences
