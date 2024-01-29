@@ -1,15 +1,18 @@
-TARGET = iphone:latest:13.0
-ARCHS = arm64 arm64e
+TARGET := iphone:clang:latest:14.0
 
 include $(THEOS)/makefiles/common.mk
 
-BUNDLE_NAME = gameseagullprefs
+BUNDLE_NAME = GameSeagullPrefs
 
-gameseagullprefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
-gameseagullprefs_FILES = GSPRootListController.m
-gameseagullprefs_FRAMEWORKS = UIKit
-gameseagullprefs_PRIVATE_FRAMEWORKS = Preferences
-gameseagullprefs_INSTALL_PATH = /Library/PreferenceBundles
-gameseagullprefs_CFLAGS = -fobjc-arc -Wdeprecated-declarations -Wno-deprecated-declarations
+GameSeagullPrefs_FILES = GSPRootListController.m ../Utils.m
+GameSeagullPrefs_FRAMEWORKS = UIKit CoreServices
+GameSeagullPrefs_PRIVATE_FRAMEWORKS = Preferences
+GameSeagullPrefs_INSTALL_PATH = /Library/PreferenceBundles
+GameSeagullPrefs_CFLAGS = -fobjc-arc
+GameSeagullPrefs_LIBRARIES = substrate
+
+ifeq ($(THEOS_PACKAGE_SCHEME),rootless)
+GameSeagullPrefs_CFLAGS += -DROOTLESS
+endif
 
 include $(THEOS_MAKE_PATH)/bundle.mk

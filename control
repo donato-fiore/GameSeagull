@@ -1,10 +1,11 @@
 Package: com.fiore.gameseagull
 Name: GameSeagull
-Version: 1.6
+Version: 2.0.0
 Architecture: iphoneos-arm
-Description: Minor game pigeon "assistance"
-Maintainer: Donato Fiore
-Author: Donato Fiore
+Description: GamePigeon hax have never been cheaper!
+Maintainer: fiore
+Author: fiore
 Section: Tweaks
-Depends: mobilesubstrate, ws.hbang.common (>= 1.11), firmware (>= 13.0)
-Replaces: com.donato.gameseagull
+Depends: mobilesubstrate, ws.hbang.common (>= 1.17), firmware (>= 14.0)
+SileoDepiction: https://raw.githubusercontent.com/donato-fiore/repo/main/depictions/com.fiore.gameseagull/depiction.json
+Icon: https://raw.githubusercontent.com/donato-fiore/repo/main/assets/com.fiore.gameseagull/icon.png

@@ -1,4 +1,11 @@
-#include "GSPRootListController.h"
+#import "GSPRootListController.h"
+
+#ifdef ROOTLESS
+@import CepheiPrefs.Swift;
+#else
+@import Preferences.PSSpecifier;
+@import CepheiPrefs.HBAppearanceSettings;
+#endif
 
 @implementation GSPRootListController
 
@@ -11,65 +18,85 @@
 }
 
 - (instancetype)init {
-    self = [super init];
+	self = [super init];
 
-    if (self) {
-        HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
-        appearanceSettings.tintColor = [UIColor colorWithRed:1.0f green:0.81f blue:0.86f alpha:1];
-        appearanceSettings.tableViewCellSeparatorColor = [UIColor colorWithWhite:0 alpha:0];
-        self.hb_appearanceSettings = appearanceSettings;
+	if (self) {
+		HBAppearanceSettings *appearanceSettings = [[HBAppearanceSettings alloc] init];
+		appearanceSettings.tintColor = TINT_COLOR;
+		self.hb_appearanceSettings = appearanceSettings;
 
-		self.applyButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" 
-                                    style:UIBarButtonItemStylePlain
-                                    target:self 
-                                    action:@selector(apply:)];
-        self.applyButton.tintColor = [UIColor colorWithRed:1.0f green:0.81f blue:0.86f alpha:1];
+		self.applyButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply" style:UIBarButtonItemStylePlain target:[self class] action:@selector(apply)];
+		self.applyButton.tintColor = TINT_COLOR;
 		self.navigationItem.rightBarButtonItem = self.applyButton;
-    }
-    return self;
+	}
+
+	return self;
 }
 
--(void)github {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/donato-fiore/GameSeagull"]];
+extern char **environ;
++ (void)apply {
+	const char *args[] = {
+		[ROOT_PATH_NS(@"/usr/bin/killall") UTF8String],
+		"MobileSMS",
+		NULL
+	};
+	pid_t pid = -1;
+	posix_spawn(&pid, args[0], NULL, NULL, (char *const *)args, environ);
 }
 
-- (void)apply:(id)sender {
-	pid_t pid;
-	const char *args[] = {"sh", "-c", "killall MobileSMS", NULL};
-	posix_spawn(&pid, "/bin/sh", NULL, NULL, (char *const *)args, NULL);
-}
--(void)twitter {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/TheDonatoFiore"] options:@{} completionHandler:nil];
-}
 @end
 
-@implementation WinSpooferController
-@synthesize doneButton;
-- (void)viewDidLoad {
-	[super viewDidLoad];
+@implementation GSPWinSpooferController
 
-	UIButton *done = [UIButton buttonWithType:UIButtonTypeCustom];
-    done.frame = CGRectMake(0,0,30,30);
-    done.layer.cornerRadius = done.frame.size.height / 2;
-    done.layer.masksToBounds = YES;
-    [done setImage:[UIImage systemImageNamed:@"keyboard.chevron.compact.down"] forState:UIControlStateNormal];
-    [done addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
-    
-    doneButton = [[UIBarButtonItem alloc] initWithCustomView:done];
-    
-    self.navigationItem.rightBarButtonItems = @[doneButton];
-}
-- (void)loadView {
-	[super loadView];
-	((UITableView *)[self table]).keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-}
 - (NSArray *)specifiers {
 	if (!_specifiers) {
-		_specifiers = [self loadSpecifiersFromPlistName:@"WinSpoofing" target:self];
+		_specifiers = [self loadSpecifiersFromPlistName:@"WinSpoofer" target:self];
 	}
+
 	return _specifiers;
 }
-- (void)dismiss:(id)sender {
-	[self.view endEditing:YES];
+
+- (instancetype)init {
+	self = [super init];
+
+	if (self) {
+		self.keyboardDownButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"keyboard.chevron.compact.down"] style:UIBarButtonItemStylePlain target:self action:@selector(keyboardDown)];
+		self.keyboardDownButton.tintColor = TINT_COLOR;
+		self.navigationItem.rightBarButtonItem = self.keyboardDownButton;
+	}
+
+	return self;
 }
+
+- (void)keyboardDown {
+	[self.view endEditing:true];
+	[GSPRootListController apply];
+}
+
+@end
+
+@implementation GSPWinSpooferCell
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier specifier:(PSSpecifier *)specifier  {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier specifier:specifier];
+
+    if (self) {
+		LSBundleProxy *bundleProxy = [LSBundleProxy bundleProxyForIdentifier:@"com.gamerdelights.gamepigeon.ext"];
+		NSString *winsDataPath = [NSString stringWithFormat:@"%@/Library/Preferences/com.gamerdelights.gamepigeon.ext.plist", bundleProxy.dataContainerURL.path];
+		NSDictionary *winsData = [NSDictionary dictionaryWithContentsOfFile:winsDataPath];
+		NSString *wins = [NSString stringWithFormat:@"%@", [winsData objectForKey:[NSString stringWithFormat:@"%@_wins", specifier.properties[@"key"]]]];
+		if ([wins length] < 1) wins = @"0";
+
+		[self setPlaceholderText:wins];
+
+		for (UIView *subview in self.contentView.subviews) {
+			if ([subview isKindOfClass:[UITextField class]]) {
+				UITextField *input = (UITextField *)subview;
+				input.textAlignment = NSTextAlignmentRight;
+			}
+		}
+	}
+	
+	return self;
+}
+
 @end

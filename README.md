@@ -2,15 +2,23 @@
 
 Get it on my [repo](https://donato-fiore.github.io/repo)
 
-Latest version direct download: [here](https://github.com/donato-fiore/GameSeagull/releases/download/1.6/com.fiore.gameseagull_1.6_iphoneos-arm.deb)
+If you would like to support me, consider donating [here](https://www.paypal.com/paypalme/donato-fiore)!
+
 # Building & Installation
 ```SHELL
 git clone https://github.com/donato-fiore/GameSeagull.git
 cd GameSeagull
-make package install
+./build_release.sh
 ```
 
 # Changelog
+## [2.0](https://github.com/donato-fiore/GameSeagull/releases/download/2.0/com.fiore.gameseagull_2.0.0_iphoneos-arm.deb) - 2024-01-28
+### Updates:
+- Rootless and rootful support
+- Rebuilt preferences
+- Improve backend functionality
+- Added "Disable Timer" hack
+
 ## [1.6](https://github.com/donato-fiore/GameSeagull/releases/download/1.6/com.fiore.gameseagull_1.6_iphoneos-arm.deb) - 2021-11-19
 ### Changed
 - How the tweak uses prefs (hopefully this works)

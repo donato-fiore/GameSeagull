@@ -1,65 +1,56 @@
-#include <SpriteKit/SpriteKit.h>
-#include <SpriteKit/SKView.h>
-#include <SceneKit/SCNView.h>
-#include <Foundation/Foundation.h>
+@import SpriteKit;
 
-@interface GameScene : SKScene
+@interface ArcheryView : NSObject
 @end
 
-@interface PoolScene : GameScene {
-    SKShapeNode *canvas;
+@interface PoolScene : SKScene
+@property (nonatomic) int currentColorHue;
+@end
+
+@interface PoolScene2 : NSObject
+@property (nonatomic) int currentColorHue;
+@end
+
+@interface PoolScene3 : NSObject
+@property (nonatomic) int currentColorHue;
+@end
+
+@interface BeerView : NSObject
+@end
+
+@interface DartsScene : NSObject
+@property (assign) int score1;
+@end
+
+@interface BeerCup : NSObject
+@end
+
+@interface SeaScene : NSObject
+@end
+
+@interface SeaShip : SKScene
+@property (nonatomic) SKSpriteNode *sprite; 
+@end
+
+@interface AnagramsScene : SKScene
+@property (nonatomic, retain) NSArray *words;
+@property (nonatomic, retain) UIButton *anagrams_revealButton;
+@property (nonatomic, retain) UIButton *anagrams_autoButton;
+- (void)enterWord;
+- (void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index;
+- (void)revealWords:(bool)arg1;
+- (void)winGame;
+@end
+
+@interface HuntScene : SKScene {
+    SKSpriteNode* score_bg;
 }
+@property (nonatomic, retain) NSArray *words;
+@property (nonatomic, retain) UIButton *hunt_revealWordsButton;
+- (void)revealWords:(BOOL)reveal;
+- (bool)checkWord:(NSString *)word flag:(bool)flag;
 @end
 
-@interface PoolScene2 : GameScene {
-    SKShapeNode *canvas;
-}
-@end
-
-@interface PoolScene3 : GameScene {
-    SKShapeNode *canvas;
-}
-@end
-
-@interface BeerView : SCNView {
-    NSMutableArray *cups;
-}
-@end
-
-@interface DartsScene : GameScene {
-    NSString *mode;
-}
-@end
-
-@interface HuntScene : GameScene
--(void)revealWords:(BOOL)arg1 ;
-@end
-
-@interface AnagramsScene : GameScene {
-    NSMutableArray *blocks;
-}
--(void)revealWords:(BOOL)arg1 ;
--(void)enterWord;
--(void)thingAt:(NSArray *)words wordsArr:(NSMutableArray *)wordsArr blocks:(NSMutableArray *)blocks fromIndex:(int)index;
--(void)fillArr;
-@end
-
-@interface AnagramsWordList : SKNode {
-    NSString *words_string;
-}
-@end
-
-@interface GameIcon : UIView
--(void)setWins:(int)arg1 ;
--(NSString *)name ;
--(NSString *)_id;
-@end
-
-@interface SeaShip : SKNode
-@property (retain) SKSpriteNode *sprite; 
-@end
-
-@interface SeaScene : GameScene {
-    NSMutableArray *ships;
-}
+@interface GameIcon : NSObject
+@property (nonatomic, retain) NSString *_id;
 @end

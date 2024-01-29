@@ -1,307 +1,332 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>items</key>
-		<array>
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>headerCellClass</key>
+			<string>HBPackageNameHeaderCell</string>
+			<key>packageIdentifier</key>
+			<string>com.fiore.gameseagull</string>
+			<key>packageNameOverride</key>
+			<string>GameSeagull</string>
+			<key>titleColor</key>
+			<string>#ff99b1</string>
+			<key>subtitleColor</key>
+			<string>#aaaaaa</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Archery</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kArcheryDisableWind</string>
+			<key>label</key>
+			<string>Disable Wind</string>
+			<key>iconImageSystem</key>
+            <dict>
+                <key>name</key>
+                <string>wind</string>
+            </dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kDisableTimer</string>
+			<key>label</key>
+			<string>Disable Timer</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>headerCellClass</key>
-				<string>HBPackageNameHeaderCell</string>
-				<key>packageIdentifier</key>
-				<string>com.fiore.gameseagull</string>
-				<key>packageNameOverride</key>
-				<string>GameSeagull</string>
-				<key>titleColor</key>
-				<string>#ffcdd9</string>
-				<key>subtitleColor</key>
-				<string>#aaaaaa</string>
+				<key>name</key>
+				<string>clock.badge.xmark</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>8 ball</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kExtendLines</string>
+			<key>label</key>
+			<string>Extend Lines</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Archery</string>
+				<key>name</key>
+				<string>arrow.up.forward</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kDisableHardMode</string>
+			<key>label</key>
+			<string>Disable Hard Mode</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>archeryNoWind</string>
-				<key>label</key>
-				<string>Disable wind</string>
+				<key>name</key>
+				<string>shield.slash</string>
 			</dict>
-
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kAlwaysShowLines</string>
+			<key>label</key>
+			<string>Always Show Lines</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>archeryClose</string>
-				<key>label</key>
-				<string>Always 50ft target</string>
+				<key>name</key>
+				<string>line.diagonal</string>
 			</dict>
-
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kRGBLine</string>
+			<key>label</key>
+			<string>RGB Lines</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>8 ball</string>
+				<key>name</key>
+				<string>paintpalette</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kAlwaysMoveCueBall</string>
+			<key>label</key>
+			<string>Always Move Cue Ball *</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>extTrajectory</string>
-				<key>label</key>
-				<string>Extend trajectory</string>
+				<key>name</key>
+				<string>arrow.up.and.down.and.arrow.left.and.right</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Darts</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kOneDart</string>
+			<key>label</key>
+			<string>One Dart Win *</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>showTrajectory</string>
-				<key>label</key>
-				<string>Always show trajectory</string>
+				<key>name</key>
+				<string>target</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Tanks</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kTanksDisableWind</string>
+			<key>label</key>
+			<string>Disable Wind</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>noHardMode</string>
-				<key>label</key>
-				<string>Disable hard mode</string>
+				<key>name</key>
+				<string>wind</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Mini Golf</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kHoleInOne</string>
+			<key>label</key>
+			<string>Always Hole in One *</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>rgbLine</string>
-				<key>label</key>
-				<string>RGB guideline</string>
+				<key>name</key>
+				<string>figure.golf</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Cup Pong</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kOneCup</string>
+			<key>label</key>
+			<string>One Cup Win *</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>moveCue</string>
-				<key>label</key>
-				<string>Always move cue ball</string>
+				<key>name</key>
+				<string>circle.fill</string>
 			</dict>
-
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Word Games</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kRevealWords</string>
+			<key>label</key>
+			<string>Reveal Words</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Darts</string>
-				<key>footerText</key>
-				<string>* HIGHLY Suspicious</string>
+				<key>name</key>
+				<string>character.book.closed</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kAutoEnterWords</string>
+			<key>label</key>
+			<string>Auto Enter Words (Anagrams)</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>oneDart</string>
-				<key>label</key>
-				<string>One shot win</string>
+				<key>name</key>
+				<string>rectangle.and.pencil.and.ellipsis</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Sea Battle</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kSeeEnemies</string>
+			<key>label</key>
+			<string>See Enemy Ships</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>tanks</string>
+				<key>name</key>
+				<string>eye</string>
 			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>label</key>
+			<string>Spoof Wins</string>
+			<key>detail</key>
+			<string>GSPWinSpooferController</string>
+			<key>iconImageSystem</key>
 			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>tankNoWind</string>
-				<key>label</key>
-				<string>Disable wind</string>
+				<key>name</key>
+				<string>crown</string>
 			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Mini Golf</string>
-				<key>footerText</key>
-				<string>* HIGHLY Suspicious</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>holeInOne</string>
-				<key>label</key>
-				<string>Always hole in one</string>
-			</dict>
-
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Cup Pong</string>
-				<key>footerText</key>
-				<string>* HIGHLY Suspicious</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>cupInOne</string>
-				<key>label</key>
-				<string>One shot win</string>
-			</dict>
-
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Word Games</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>wordReveal</string>
-				<key>label</key>
-				<string>Word reveal</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>autoAnagrams</string>
-				<key>label</key>
-				<string>Auto word solver (Anagrams Only)</string>
-			</dict>
-
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Sea Battle</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSSwitchCell</string>
-				<key>default</key>
-				<false/>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>key</key>
-				<string>seeShips</string>
-				<key>label</key>
-				<string>See enemy ships</string>
-			</dict>
-
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-			</dict>
-			<dict>
-				<key>cell</key>
-				<string>PSLinkListCell</string>
-				<key>default</key>
-				<string></string>
-				<key>detail</key>
-				<string>WinSpooferController</string>
-				<key>defaults</key>
-				<string>com.fiore.gameseagullprefs</string>
-				<key>label</key>
-				<string>Spoof wins</string>
-			</dict>
-
-			<dict>
-				<key>cell</key>
-				<string>PSGroupCell</string>
-				<key>label</key>
-				<string>Other</string>
-			</dict>
-
-			<dict>
-				<key>big</key>
-				<true/>
-				<key>cellClass</key>
-				<string>HBTwitterCell</string>
-				<key>height</key>
-				<integer>56</integer>
-				<key>label</key>
-				<string>Donato Fiore</string>
-				<key>user</key>
-				<string>TheDonatoFiore</string>
-				<key>action</key>
-				<string>twitter</string>
-			</dict>
-
-			
-			<dict>
-				<key>cellClass</key>
-				<string>HBLinkTableCell</string>
-				<key>cell</key>
-				<string>PSButtonCell</string>
-				<key>action</key>
-				<string>github</string>
-				<key>label</key>
-				<string>GitHub</string>
-				<key>subtitle</key>
-				<string>Source Code</string>
-			</dict>
-
-		</array>
-		<key>title</key>
-		<string>GameSeagull</string>
-	</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Misc</string>
+			<key>footerText</key>
+			<string>* Extremely Suspicious to your Opponent</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Source Code</string>
+			<key>subtitle</key>
+			<string>Github</string>
+			<key>url</key>
+			<string>https://github.com/donato-fiore/GameSeagull</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Donate</string>
+			<key>subtitle</key>
+			<string>PayPal</string>
+			<key>url</key>
+			<string>https://paypal.me/donatofiore</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>GameSeagull</string>
+</dict>
 </plist>
