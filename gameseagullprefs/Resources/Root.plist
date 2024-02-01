@@ -53,6 +53,51 @@
 				<key>name</key>
 				<string>clock.badge.xmark</string>
 			</dict>
+			<key>pl_filter</key>
+			<dict>
+				<key>CoreFoundationVersion</key>
+				<array>
+					<real>1946.102</real>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kDisableTimer</string>
+			<key>label</key>
+			<string>Disable Timer</string>
+			<key>iconImageSystem</key>
+			<dict>
+				<key>name</key>
+				<string>clock</string>
+			</dict>
+			<key>pl_filter</key>
+			<dict>
+				<key>CoreFoundationVersion</key>
+				<array>
+					<real>0.0</real>
+					<real>1946.102</real>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kArchery50ft</string>
+			<key>label</key>
+			<string>Always 50ft Target</string>
+			<key>iconImageSystem</key>
+            <dict>
+                <key>name</key>
+                <string>50.circle</string>
+            </dict>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -158,6 +203,21 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kDartsAimbot</string>
+			<key>label</key>
+			<string>Aimbot</string>
+			<key>iconImageSystem</key>
+			<dict>
+				<key>name</key>
+				<string>scope</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Tanks</string>
@@ -197,6 +257,36 @@
 				<key>name</key>
 				<string>figure.golf</string>
 			</dict>
+			<key>pl_filter</key>
+			<dict>
+				<key>CoreFoundationVersion</key>
+				<array>
+					<real>1946.102</real>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kHoleInOne</string>
+			<key>label</key>
+			<string>Always Hole in One *</string>
+			<key>iconImageSystem</key>
+			<dict>
+				<key>name</key>
+				<string>flag.circle</string>
+			</dict>
+			<key>pl_filter</key>
+			<dict>
+				<key>CoreFoundationVersion</key>
+				<array>
+					<real>0.0</real>
+					<real>1946.102</real>
+				</array>
+			</dict>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -217,6 +307,21 @@
 			<dict>
 				<key>name</key>
 				<string>circle.fill</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.fiore.gameseagull.prefs</string>
+			<key>key</key>
+			<string>kAutoCupPong</string>
+			<key>label</key>
+			<string>Auto Shoot Button</string>
+			<key>iconImageSystem</key>
+			<dict>
+				<key>name</key>
+				<string>a.circle</string>
 			</dict>
 		</dict>
 		<dict>

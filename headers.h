@@ -1,4 +1,5 @@
 @import SpriteKit;
+@import SceneKit;
 
 @interface ArcheryView : NSObject
 @end
@@ -15,14 +16,37 @@
 @property (nonatomic) int currentColorHue;
 @end
 
-@interface BeerView : NSObject
+@interface BeerView : SCNView
+@property (assign) float F_x;
+@property (assign) float F_z;
+-(void)touchDownAtPoint:(CGPoint)arg1;
+-(void)touchMovedToPoint:(CGPoint)arg1;
+-(void)touchUpAtPoint:(CGPoint)arg1;
+- (void)shootRandomCup;
 @end
 
-@interface DartsScene : NSObject
-@property (assign) int score1;
+@interface BeerScene : SKScene
+@property (retain) BeerView *scene3d; 
 @end
 
 @interface BeerCup : NSObject
+@property (assign) SCNVector3 pos;
+@property (assign) BOOL live;
+@end
+
+@interface BeerBall : NSObject
+@property (nonatomic, retain) SCNNode *ball;
+@end
+
+@interface DartsScene : SKScene
+@property (nonatomic, assign) bool aimbotEnabled;
+@property (nonatomic, retain) UIButton *menuButton;
+@property (nonatomic, assign) int multiplier;
+@property (nonatomic, assign) int number;
+@property (nonatomic, retain) UIView *aimbotStatusView;
+@property (assign) int score1;
+- (void)updateAimbotStatusView;
+- (void)createMainMenu;
 @end
 
 @interface SeaScene : NSObject

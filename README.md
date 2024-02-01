@@ -12,8 +12,17 @@ cd GameSeagull
 ```
 
 # Changelog
+## [2.1](https://github.com/donato-fiore/GameSeagull/releases/tag/2.1) - 2024-02-01
+### Updates:
+- Fixed some icons not showing on < iOS 16
+- Added:
+    - Always 50ft Target
+    - Auto Cup Pong Button
+    - Darts Aimbot
+
 ## [2.0](https://github.com/donato-fiore/GameSeagull/releases/tag/2.0) - 2024-01-28
 ### Updates:
+- **Dropped iOS 13 Support**
 - Rootless and rootful support
 - Rebuilt preferences
 - Improve backend functionality
