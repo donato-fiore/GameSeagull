@@ -2,7 +2,7 @@
 
 Get it on my [repo](https://donato-fiore.github.io/repo)
 
-If you would like to support me, consider donating [here](https://www.paypal.com/paypalme/donato-fiore)!
+If you would like to support me, consider donating [here](http://paypal.me/donatofiore)!
 
 # Building & Installation
 ```SHELL
